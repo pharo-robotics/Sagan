@@ -95,7 +95,7 @@ SaClassRoom >> initializeWidgets [
 	listables addPage:
 		(self newNotebookPageWith: lessonsTable and: 'Lessons').
 	
-	self course: SaCourse course.
+	self course: ISENROSCourse course.
 	
 ]
 

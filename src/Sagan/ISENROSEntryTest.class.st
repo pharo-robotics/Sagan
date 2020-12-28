@@ -22,13 +22,13 @@ Vous risquez de perdre vos reponses.
 
 "
 Class {
-	#name : #SaEntryTestFactory,
+	#name : #ISENROSEntryTest,
 	#superclass : #Object,
-	#category : #'Sagan-Model'
+	#category : #'Sagan-ISENRos'
 }
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> concepts [
+ISENROSEntryTest >> concepts [
 
 	^ SaOpenQuestionList new
 		  title: 'Concepts';
@@ -43,7 +43,7 @@ SaEntryTestFactory >> concepts [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> demographicQuestions [
+ISENROSEntryTest >> demographicQuestions [
 
 	^ SaSatisfactionQuestionTable new
 		  title: 'Questions generaux';
@@ -60,7 +60,7 @@ SaEntryTestFactory >> demographicQuestions [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> explanation [
+ISENROSEntryTest >> explanation [
 
 	^ SaMarkdownContent new
 		  title: 'État de lieux';
@@ -69,7 +69,7 @@ SaEntryTestFactory >> explanation [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> math [
+ISENROSEntryTest >> math [
 
 	^ SaOpenQuestionList new
 		  title: 'Math';
@@ -82,7 +82,7 @@ SaEntryTestFactory >> math [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> network [
+ISENROSEntryTest >> network [
 
 	^ SaOpenQuestionList new
 		  title: 'Réseaux.';
@@ -95,7 +95,7 @@ SaEntryTestFactory >> network [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> operativeSystems [
+ISENROSEntryTest >> operativeSystems [
 
 	^ SaOpenQuestionList new
 		  title: 'Systeme d''Explotation';
@@ -107,7 +107,7 @@ SaEntryTestFactory >> operativeSystems [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> programmingLanguages [
+ISENROSEntryTest >> programmingLanguages [
 
 	^ SaOpenQuestionList new
 		  title: 'Langage de programamtion ';
@@ -123,7 +123,7 @@ SaEntryTestFactory >> programmingLanguages [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> sourceVersionControl [
+ISENROSEntryTest >> sourceVersionControl [
 
 	^ SaOpenQuestionList new
 		  title: 'Systeme de control des versions';
@@ -137,7 +137,7 @@ SaEntryTestFactory >> sourceVersionControl [
 ]
 
 { #category : #'as yet unclassified' }
-SaEntryTestFactory >> test [
+ISENROSEntryTest >> test [
 
 	^ SaLesson new
 		  title: 'Intro Test';
@@ -153,6 +153,6 @@ SaEntryTestFactory >> test [
 ]
 
 { #category : #tests }
-SaEntryTestFactory >> testExplanation [
+ISENROSEntryTest >> testExplanation [
 	^ self class comment
 ]
