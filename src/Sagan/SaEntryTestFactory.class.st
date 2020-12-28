@@ -69,6 +69,74 @@ SaEntryTestFactory >> explanation [
 ]
 
 { #category : #'as yet unclassified' }
+SaEntryTestFactory >> math [
+
+	^ SaOpenQuestionList new
+		  title: 'Math';
+		  questions:
+			  { 'Que sont les quaternions?'. 'Quelle est la notation de la représentation angulaire d''Euler?'.
+			  'Comparez rapidement les coordonnées cartésiennes et polaires'.
+			  'Expliquez rapidement l''idée de la transformation des coordonnées (ou de la transformation du système).'.
+			  'Quelles sont les opérations matricielles et vectorielles que vous connaissez?' };
+		  yourself
+]
+
+{ #category : #'as yet unclassified' }
+SaEntryTestFactory >> network [
+
+	^ SaOpenQuestionList new
+		  title: 'Réseaux.';
+		  questions: { 'Comparez rapidement TCP / IP et UDP / IP'.
+			  'Définissez rapidement le socket'.
+			  'Comparez rapidement les descripteurs de socket et de fichier'.
+			  'Définissez rapidement ce qu''est un flux'.
+			  'Définissez rapidement ce que le marshalling / unmarshalling des données' };
+		  yourself
+]
+
+{ #category : #'as yet unclassified' }
+SaEntryTestFactory >> operativeSystems [
+
+	^ SaOpenQuestionList new
+		  title: 'Systeme d''Explotation';
+		  questions:
+			  { 'Qu''est-ce qu''un processus?'. 'Qu''est-ce qu''un fil?'.
+			  'Qu''est-ce que la planification des processus?'.
+			  'Pouvez-vous nommer différentes stratégies de planification des processus?' };
+		  yourself
+]
+
+{ #category : #'as yet unclassified' }
+SaEntryTestFactory >> programmingLanguages [
+
+	^ SaOpenQuestionList new
+		  title: 'Langage de programamtion ';
+		  questions: { 'Qu''entendez-vous par programmation en direct'.
+			  'Comparez rapidement le typage statique et dynamique'.
+			  'Définissez rapidement ce qu''est un modèle en C ++'.
+			  'Définissez rapidement ce qu''est un pointeur'.
+			  'Quelles opérations pouvons-nous faire avec des pointeurs?'.
+			  'Répertoriez rapidement les fonctionnalités de «programmation fonctionnelle» de Python.'.
+			  'Répertoriez rapidement les fonctionnalités de programmation orientée objet de Python.'.
+			  'Quel genre de langage est bash? À quoi sert-il?.' };
+		  yourself
+]
+
+{ #category : #'as yet unclassified' }
+SaEntryTestFactory >> sourceVersionControl [
+
+	^ SaOpenQuestionList new
+		  title: 'Systeme de control des versions';
+		  questions: { 'Que comprenez-vous par versioning?'.
+			  'Expliquez rapidement le fonctionnement de GIT'.
+			  'Expliquez rapidement comment GIT permet le travail en équipe'.
+			  'Expliquez rapidement comment fonctionne SVN'.
+			  'Expliquez rapidement comment SVN permet le travail en équipe'.
+			  'Listez des autres systemes avec ceux que vous avez experience' };
+		  yourself
+]
+
+{ #category : #'as yet unclassified' }
 SaEntryTestFactory >> test [
 
 	^ SaLesson new
@@ -76,6 +144,11 @@ SaEntryTestFactory >> test [
 		  addUnit: self explanation;
 		  addUnit: self demographicQuestions;
 		  addUnit: self concepts;
+		  addUnit: self operativeSystems;
+		  addUnit: self programmingLanguages;
+		  addUnit: self sourceVersionControl;
+		  addUnit: self network;
+		  addUnit: self math;
 		  yourself
 ]
 

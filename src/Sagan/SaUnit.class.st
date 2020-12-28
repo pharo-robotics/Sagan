@@ -23,7 +23,8 @@ SaUnit >> order: aNumber [
 { #category : #accessing }
 SaUnit >> renderIn: aLessonViewer [
 
-	aLessonViewer content: (self widgetIn: aLessonViewer)
+	aLessonViewer content: (self widgetIn: aLessonViewer).
+	aLessonViewer unitTitle: self title
 ]
 
 { #category : #accessing }

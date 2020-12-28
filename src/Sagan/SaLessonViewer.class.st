@@ -7,7 +7,8 @@ Class {
 		'nextButton',
 		'content',
 		'ribbon',
-		'progress'
+		'progress',
+		'unitTitleLabel'
 	],
 	#category : #'Sagan-UI'
 }
@@ -16,6 +17,7 @@ Class {
 SaLessonViewer class >> defaultSpec [
 
 	^ SpBoxLayout newVertical
+		  add: #unitTitleLabel height: self toolbarHeight;
 		  add: #progress height: 10;
 		  add: (SpBoxLayout newHorizontal
 				   add: #previousButton width: self toolbarHeight;
@@ -60,6 +62,7 @@ SaLessonViewer >> initializeWidgets [
 	progress fixedPercentage: 0.
 	ribbon := self newProgressBar.
 	ribbon fixedPercentage: 0.
+	unitTitleLabel := self newLabel .
 	self updateLesson.
 ]
 
@@ -96,6 +99,11 @@ SaLessonViewer >> previous [
 	lesson previous.
 	progress fixedPercentage: lesson completedPct.
 	self updateLesson
+]
+
+{ #category : #'previous ' }
+SaLessonViewer >> unitTitle: aTitle [
+	unitTitleLabel label: aTitle
 ]
 
 { #category : #initialization }

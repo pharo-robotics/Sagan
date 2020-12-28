@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #accessing }
+SaFinish >> initialize [
+
+	super initialize.
+	title := 'Lesson finished'
+]
+
+{ #category : #accessing }
 SaFinish >> isSatisfied [
 	^ false
 ]

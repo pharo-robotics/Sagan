@@ -10,9 +10,9 @@ Class {
 
 { #category : #accessing }
 SaOpenQuestionList >> isSatisfied [
-
+	^ true "
 	^ questions allSatisfy: [ :q | 
-		  (self state at: q ifAbsent: [ '' ]) isNotEmpty ]
+		  (self state at: q ifAbsent: [ '' ]) isNotEmpty ]"
 ]
 
 { #category : #accessing }
