@@ -1,5 +1,5 @@
 Class {
-	#name : #SaQuestion,
+	#name : #SaOpenQuestionWidget,
 	#superclass : #SaPresenter,
 	#instVars : [
 		'questionLabel',
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #specs }
-SaQuestion class >> defaultSpec [
+SaOpenQuestionWidget class >> defaultSpec [
 
 	^ SpBoxLayout newVertical
 		  add: #questionLabel height: self toolbarHeight * 1.5;
@@ -17,18 +17,22 @@ SaQuestion class >> defaultSpec [
 ]
 
 { #category : #initialization }
-SaQuestion >> answer [
+SaOpenQuestionWidget >> answer [
 
 	^ answerLabel text asString
 ]
 
 { #category : #initialization }
-SaQuestion >> answer: aValue [ 
+SaOpenQuestionWidget >> answer: aValue [ 
 	answerLabel text: aValue
 ]
 
+{ #category : #enumerating }
+SaOpenQuestionWidget >> beShowAllOptions [
+]
+
 { #category : #initialization }
-SaQuestion >> initializeWidgets [
+SaOpenQuestionWidget >> initializeWidgets [
 	super initializeWidgets.
 	questionLabel := self newLabel.
 	answerLabel := self newText.
@@ -36,16 +40,16 @@ SaQuestion >> initializeWidgets [
 ]
 
 { #category : #initialization }
-SaQuestion >> question: aQuestion [
+SaOpenQuestionWidget >> question: aQuestion [
 	^ questionLabel label: aQuestion
 ]
 
 { #category : #initialization }
-SaQuestion >> whenSubmitDo: aBlock [
+SaOpenQuestionWidget >> whenSubmitDo: aBlock [
 	answerLabel whenSubmitDo: aBlock
 ]
 
 { #category : #enumerating }
-SaQuestion >> whenTextChangedDo: aFullBlockClosure [ 
+SaOpenQuestionWidget >> whenTextChangedDo: aFullBlockClosure [ 
 	answerLabel whenTextChangedDo: aFullBlockClosure 
 ]

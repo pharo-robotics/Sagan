@@ -26,19 +26,6 @@ SaLessonViewer class >> defaultSpec [
 				   yourself);
 		  add: #ribbon height: 50;
 		  yourself
-
-
-
-	"
-
-	^ SpBoxLayout newHorizontal
-		  add: #previous width: self toolbarHeight;
-		  add: (SpBoxLayout newVertical
-				   add: #content;
-				   add: #ribbon height: 50;
-				   yourself);
-		  add: #next width: self toolbarHeight;
-		  yourself"
 ]
 
 { #category : #accessing }
@@ -57,13 +44,14 @@ SaLessonViewer >> initializeWidgets [
 	nextButton := self newButton.
 	nextButton label: '>'.
 	nextButton action: [ self next ].
-	
+
 	progress := self newProgressBar.
 	progress fixedPercentage: 0.
 	ribbon := self newProgressBar.
 	ribbon fixedPercentage: 0.
-	unitTitleLabel := self newLabel .
-	self updateLesson.
+	unitTitleLabel := self newTextInput.
+	unitTitleLabel enabled: false .
+	self updateLesson
 ]
 
 { #category : #accessing }
@@ -103,7 +91,8 @@ SaLessonViewer >> previous [
 
 { #category : #'previous ' }
 SaLessonViewer >> unitTitle: aTitle [
-	unitTitleLabel label: aTitle
+	unitTitleLabel text: ((MicroDownParser asText: '#**', aTitle, '**') copyReplaceAll: String cr with:'')
+
 ]
 
 { #category : #initialization }

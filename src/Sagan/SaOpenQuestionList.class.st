@@ -43,7 +43,7 @@ SaOpenQuestionList >> widgetIn: aPresenter [
 	components := OrderedCollection new.
 	questions do: [ :q | 
 		| questionWidget |
-		questionWidget := SaQuestion new.
+		questionWidget := SaOpenQuestionWidget new.
 		questionWidget question: q.
 		questionWidget answer: (self state at: q ifAbsent: [ '' ]).
 		questionWidget whenTextChangedDo: [ : s | 

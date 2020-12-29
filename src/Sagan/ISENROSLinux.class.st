@@ -17,7 +17,7 @@ ISENROSLinux >> lesson [
 		  addUnit: self objectives;
 		  addUnit: self whatIsLinuxMC;
 		  addUnit: self someHistory;
-		  addUnit: self whatIsLinuxMC;
+		  addUnit: self linuxQuiz;
 		  addUnit: self ubuntu;
 		  addUnit: self whatIsLinuxMC;
 		  "addUnit: self virtualBox;
@@ -25,6 +25,26 @@ ISENROSLinux >> lesson [
 		  addUnit: self whatIsLinuxMC;
 		  addUnit: self gettingOurEnvironmentRunning;"
 		  addUnit: self summary;
+		  yourself
+]
+
+{ #category : #accessing }
+ISENROSLinux >> linuxQuiz [
+
+	| questions |
+	questions := OrderedCollection new.
+	questions add: (SaMultipleChoiceQuestion new
+			 question:
+				 'Qu''est-ce que ce la difference entre GNU/Linux et Windows, MacOS, etc? ';
+			 choices: { 'Système d''exploitation libre'.
+				 'La couleur' };
+			 yourself).
+	questions add: (SaOpenQuestion new
+			 question: 'Expliquez COPY-LEFT avec vos mots ';
+			 yourself).
+	^ SaQuestionaire new
+		  title: 'Quiz Linux';
+		  questions: questions reverse;
 		  yourself
 ]
 

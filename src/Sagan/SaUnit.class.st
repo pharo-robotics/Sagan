@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+SaUnit >> isSatisfied [ 
+	self subclassResponsibility 
+]
+
+{ #category : #accessing }
 SaUnit >> order [
 
 	^ order ifNil: [ 1 ]

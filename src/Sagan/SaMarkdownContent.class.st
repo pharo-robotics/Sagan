@@ -20,7 +20,8 @@ SaMarkdownContent >> isSatisfied [
 { #category : #accessing }
 SaMarkdownContent >> widgetIn: aPresenter [
 
-	^ aPresenter newText
-		  text: (MicroDownParser asText: content);
-		  yourself
+	| text |
+	text := aPresenter newText.
+	text text: (MicroDownParser asText: content).
+	^ text
 ]

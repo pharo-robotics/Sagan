@@ -12,7 +12,7 @@ Class {
 
 { #category : #accessing }
 SaMultipleChoiceQuestion >> choices [
-	^ choices
+	^ choices shuffle
 ]
 
 { #category : #'as yet unclassified' }

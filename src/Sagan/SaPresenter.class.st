@@ -5,28 +5,6 @@ Class {
 }
 
 { #category : #'instance creation' }
-SaPresenter >> newLesson [
-
-	| table |
-	
-	
-	table := self newTable.
-
-	table
-		sortingBlock: [ :a :b | a title < b title ];
-		addColumn:
-			((SpStringTableColumn
-				  title: 'Title'
-				  evaluated: [ :item | item title ])
-				 beSortable;
-				 yourself);
-		whenSelectionChangedDo: [ :selection | 
-		self articleReviewReference: selection selectedItem ];
-		beResizable.
-	^ table
-]
-
-{ #category : #'instance creation' }
 SaPresenter >> newLessonEntryTable [
 
 	| table |

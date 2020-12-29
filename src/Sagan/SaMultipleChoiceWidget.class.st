@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'multipleChoiceQuestion',
 		'questionLabel',
-		'choicesList'
+		'choicesList',
+		'showAllOptions'
 	],
 	#category : #'Sagan-UI'
 }
@@ -13,15 +14,36 @@ Class {
 SaMultipleChoiceWidget class >> defaultSpec [
 
 	^ SpBoxLayout newVertical
-		  add: #questionLabel height: self toolbarHeight * 2 ;
+		  add: #questionLabel height: self toolbarHeight;
 		  add: #choicesList.
+]
 
+{ #category : #initialization }
+SaMultipleChoiceWidget >> beShowAllOptions [
+
+	showAllOptions := true
+]
+
+{ #category : #initialization }
+SaMultipleChoiceWidget >> buildWithSpecLayout: aLayout [
+	showAllOptions ifTrue: [
+	(((aLayout class allSlots detect: [ :s | s name = #children ]) read:
+		  aLayout) at: #choicesList) height:
+		choicesList items size * self class toolbarHeight.].
+	^ super buildWithSpecLayout: aLayout
 ]
 
 { #category : #initialization }
 SaMultipleChoiceWidget >> includesResponse: aResponse [
 	
 	^ multipleChoiceQuestion includesResponse: aResponse
+]
+
+{ #category : #initialization }
+SaMultipleChoiceWidget >> initialize [
+
+	super initialize.
+	showAllOptions := false
 ]
 
 { #category : #initialization }
@@ -61,6 +83,12 @@ SaMultipleChoiceWidget >> multipleChoiceQuestion: aQuestion [
 SaMultipleChoiceWidget >> setResponse: aResponse [
 	
 	^ multipleChoiceQuestion setResponse: aResponse
+]
+
+{ #category : #initialization }
+SaMultipleChoiceWidget >> stabilize [
+	(((self layout class allSlots detect:[ : s | s name = #children ]) read: self layout) at: #choicesList) height: 
+	choicesList items size * self class toolbarHeight 
 ]
 
 { #category : #initialization }
