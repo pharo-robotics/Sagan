@@ -23,5 +23,5 @@ BaselineOfSagan >> baseline: spec [
 				with: [ spec repository: 'github://pillar-markup/MicroDown' ].
 			spec
 				package: 'Sagan'
-				with: [ spec requires: #(VLC Spec MicroDownDev MicroDownDev) ] ]
+				with: [ spec requires: #(VLC Spec MicrodownDev 'Microdown-RichTextComposer') ] ]
 ]
