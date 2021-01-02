@@ -1,36 +1,44 @@
 Class {
-	#name : #SaVideoContent,
+	#name : #SaMediaContent,
 	#superclass : #SaUnit,
 	#instVars : [
-		'url'
+		'media'
 	],
 	#category : #'Sagan-Model'
 }
 
 { #category : #accessing }
-SaVideoContent >> isSatisfied [ 
+SaMediaContent >> isSatisfied [ 
 	^ true
 ]
 
-{ #category : #accessing }
-SaVideoContent >> url [
-
-	^ url
-]
-
-{ #category : #accessing }
-SaVideoContent >> url: anUrl [
-
-	url := anUrl
+{ #category : #'as yet unclassified' }
+SaMediaContent >> media [
+	^ media ifNil: [ media := self openMedia ]
 ]
 
 { #category : #'as yet unclassified' }
-SaVideoContent >> whatIsMissing [
+SaMediaContent >> openMedia [
+	^ self subclassResponsibility
+]
+
+{ #category : #'as yet unclassified' }
+SaMediaContent >> play [
+	self media play
+]
+
+{ #category : #'as yet unclassified' }
+SaMediaContent >> stop [
+	self media stop
+]
+
+{ #category : #'as yet unclassified' }
+SaMediaContent >> whatIsMissing [
 	^ ''
 ]
 
 { #category : #accessing }
-SaVideoContent >> widgetIn: aPresenter [
+SaMediaContent >> widgetIn: aPresenter [
 
 	| component c |
 	component := aPresenter instantiate: SpDynamicPresenter.

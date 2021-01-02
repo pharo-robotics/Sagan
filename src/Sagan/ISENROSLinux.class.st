@@ -12,7 +12,7 @@ ISENROSLinux >> filesystem [
 { #category : #accessing }
 ISENROSLinux >> installUbuntu [
 
-	^ SaVideoContent new
+	^ SaRemoteMediaContent new
 		  title: 'Installer Ubuntu';
 		  url: 'https://www.youtube.com/watch?v=H-QLRYSVCYo';
 		  yourself
