@@ -13,7 +13,7 @@ BaselineOfSagan >> baseline: spec [
 				baseline: 'VLC'
 				with: [ spec repository: 'github://badetitou/Pharo-LibVLC' ].
 			spec
-				baseline: 'Spec'
+				baseline: 'Spec2'
 				with: [ spec repository: 'github://pharo-spec/Spec' ].
 			spec
 				baseline: 'MicrodownDev'
@@ -23,5 +23,5 @@ BaselineOfSagan >> baseline: spec [
 				with: [ spec repository: 'github://pillar-markup/MicroDown' ].
 			spec
 				package: 'Sagan'
-				with: [ spec requires: #(VLC Spec MicrodownDev 'Microdown-RichTextComposer') ] ]
+				with: [ spec requires: #(VLC Spec2 MicrodownDev 'Microdown-RichTextComposer') ] ]
 ]
