@@ -12,7 +12,7 @@ SaRemoteMediaContent >> openMedia [
 	| vlc mediaSelector player |
 	vlc := VLCLibrary uniqueInstance createVLCInstance.
 	mediaSelector := vlc
-		createMediaFromLocation: url .
+		createMediaFromLocation: url asString .
 	player := VLCLibrary uniqueInstance mediaPlayerNewFromMedia: mediaSelector.
 	^ player
 ]

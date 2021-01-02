@@ -14,7 +14,7 @@ ISENROSLinux >> installUbuntu [
 
 	^ SaRemoteMediaContent new
 		  title: 'Installer Ubuntu';
-		  url: 'https://www.youtube.com/watch?v=H-QLRYSVCYo';
+		  url: 'https://www.dailymotion.com/video/x7yfqip';
 		  yourself
 ]
 
