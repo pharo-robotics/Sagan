@@ -16,7 +16,7 @@ BaselineOfSagan >> baseline: spec [
 				baseline: 'Spec'
 				with: [ spec repository: 'github://pharo-spec/Spec' ].
 			spec
-				baseline: 'MicroDownDev'
+				baseline: 'MicrodownDev'
 				with: [ spec repository: 'github://pillar-markup/MicroDown:dev' ].
 			spec
 				package: 'Microdown-RichTextComposer'
