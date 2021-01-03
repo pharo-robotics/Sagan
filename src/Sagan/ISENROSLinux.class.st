@@ -11,11 +11,10 @@ ISENROSLinux >> filesystem [
 
 { #category : #accessing }
 ISENROSLinux >> installUbuntu [
-
-	^ SaRemoteMediaContent new
-		  title: 'Installer Ubuntu';
-		  url: 'https://www.dailymotion.com/video/x7yfqip';
-		  yourself
+	^ SaLocalMediaContent new
+		title: 'Installer Ubuntu';
+		file: self filesystem / 'videoplayback.mp4';
+		yourself
 ]
 
 { #category : #accessing }

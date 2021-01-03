@@ -20,3 +20,9 @@ SaLocalMediaContent >> openMedia [
 	player := VLCLibrary uniqueInstance mediaPlayerNewFromMedia: mediaSelector.
 	^ player
 ]
+
+{ #category : #'as yet unclassified' }
+SaLocalMediaContent >> play [  
+file fullName inspect.
+	^ self inform: (LibC resultOfCommand: ('/Applications/VLC.app/Contents/MacOS/VLC {1}' format: { file fullName }))
+]
