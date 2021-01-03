@@ -7,6 +7,13 @@ Class {
 	#category : #'Sagan-Model'
 }
 
+{ #category : #'as yet unclassified' }
+SaLocalMediaContent >> command [
+	OSPlatform current isMacOS
+		ifTrue: [ ^ '/Applications/VLC.app/Contents/MacOS/VLC' ].
+	^ 'vlc '
+]
+
 { #category : #accessing }
 SaLocalMediaContent >> file: aFile [
 	file := aFile asFileReference 
@@ -22,7 +29,11 @@ SaLocalMediaContent >> openMedia [
 ]
 
 { #category : #'as yet unclassified' }
-SaLocalMediaContent >> play [  
-file fullName inspect.
-	^ self inform: (LibC resultOfCommand: ('/Applications/VLC.app/Contents/MacOS/VLC {1}' format: { file fullName }))
+SaLocalMediaContent >> play [
+	LibC
+		runCommand:
+			('{1} {2}'
+				format:
+					{self command.
+					file fullName})
 ]
