@@ -10,32 +10,41 @@ ISENROSLinux >> filesystem [
 ]
 
 { #category : #accessing }
+ISENROSLinux >> gettingOurEnvironmentRunning [
+	^ SaLocalMediaContent new
+		title: 'Installer Ubuntu';
+		file: self filesystem / 'gettingTheEnvironmentRunning.mp4';
+		overview: self filesystem / 'gettingTheEnvironmentRunning.md';
+		yourself
+]
+
+{ #category : #accessing }
 ISENROSLinux >> installUbuntu [
 	^ SaLocalMediaContent new
 		title: 'Installer Ubuntu';
-		file: self filesystem / 'videoplayback.mp4';
+		file: self filesystem / 'installingUbuntu.mp4';
+		overview: self filesystem / 'installingUbuntu.md';
 		yourself
 ]
 
 { #category : #accessing }
 ISENROSLinux >> lesson [
-
 	^ SaLesson new
-		  title: 'Linux';
-		  addUnit: self installUbuntu;
-		  addUnit: self objectives;
-		  addUnit: self whatIsLinuxMC;
-		  addUnit: self someHistory;
-		  addUnit: self linuxQuiz;
-		  addUnit: self ubuntu;
-		  addUnit: self ubuntuQuiz;
-		  addUnit: self virtualBox;
-		  addUnit: self vboxQuiz;
-		  addUnit: self installUbuntu;
-		  "addUnit: self whatIsLinuxMC;
-		  addUnit: self gettingOurEnvironmentRunning;"
-		  addUnit: self summary;
-		  yourself
+		title: 'Linux';
+		addUnit: self objectives;
+		addUnit: self whatIsLinuxMC;
+		addUnit: self someHistory;
+		addUnit: self linuxQuiz;
+		addUnit: self ubuntu;
+		addUnit: self ubuntuQuiz;
+		addUnit: self virtualBox;
+		addUnit: self vboxQuiz;
+		addUnit: self installUbuntu;
+		addUnit: self quizUbuntuInstallation;
+		addUnit: self gettingOurEnvironmentRunning;
+		addUnit: self quizGettingOurEnvironmentRunning;
+		addUnit: self summary;
+		yourself
 ]
 
 { #category : #accessing }
@@ -64,6 +73,64 @@ ISENROSLinux >> objectives [
 	^ SaMarkdownContent new
 		  title: 'Objectives';
 		  content: (self filesystem / 'objectives.md') readStream upToEnd;
+		  yourself
+]
+
+{ #category : #accessing }
+ISENROSLinux >> quizGettingOurEnvironmentRunning [
+
+	| questions |
+	questions := OrderedCollection new.
+	questions add: (SaMultipleChoiceQuestion new
+			 question: 'A quoi ça serve la virtualization?';
+			 singleResponse: false;
+			 choices:
+				 { 'Maximizer l''utilization des resources computationelles'.
+				 'Minimizer le gaspillage d''electricité'.
+				 'Faciliter la modularization des systemes' };
+			 yourself).
+				questions add: (SaMultipleChoiceQuestion new
+			 question: 'Qu''est-ce qu''on trouve en common entre Linux et Virtualbox?';
+			 choices:
+				 { 'Ils sont partie de la famille GNU'.
+				 'Ils sont developpe que pour travailler avec les architectures  x86 et AMD64/Intel64'.
+				 'Apartiens a Oracle' };
+			 yourself).
+	questions add: (SaOpenQuestion new
+			 question: 'Expliquez avec vos mot pour quoi est-ce que vous pensez que c''est important l''utilization de virtual box dans notre cours';
+			 yourself).
+	^ SaQuestionaire new
+		  title: 'Quiz #4: Virtualization';
+		  questions: questions reverse;
+		  yourself
+]
+
+{ #category : #accessing }
+ISENROSLinux >> quizUbuntuInstallation [
+
+	| questions |
+	questions := OrderedCollection new.
+	questions add: (SaMultipleChoiceQuestion new
+			 question: 'A quoi ça serve la virtualization?';
+			 singleResponse: false;
+			 choices:
+				 { 'Maximizer l''utilization des resources computationelles'.
+				 'Minimizer le gaspillage d''electricité'.
+				 'Faciliter la modularization des systemes' };
+			 yourself).
+				questions add: (SaMultipleChoiceQuestion new
+			 question: 'Qu''est-ce qu''on trouve en common entre Linux et Virtualbox?';
+			 choices:
+				 { 'Ils sont partie de la famille GNU'.
+				 'Ils sont developpe que pour travailler avec les architectures  x86 et AMD64/Intel64'.
+				 'Apartiens a Oracle' };
+			 yourself).
+	questions add: (SaOpenQuestion new
+			 question: 'Expliquez avec vos mot pour quoi est-ce que vous pensez que c''est important l''utilization de virtual box dans notre cours';
+			 yourself).
+	^ SaQuestionaire new
+		  title: 'Quiz #4: Virtualization';
+		  questions: questions reverse;
 		  yourself
 ]
 

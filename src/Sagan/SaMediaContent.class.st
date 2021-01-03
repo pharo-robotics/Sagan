@@ -2,7 +2,8 @@ Class {
 	#name : #SaMediaContent,
 	#superclass : #SaUnit,
 	#instVars : [
-		'media'
+		'media',
+		'overview'
 	],
 	#category : #'Sagan-Model'
 }
@@ -23,6 +24,11 @@ SaMediaContent >> openMedia [
 ]
 
 { #category : #'as yet unclassified' }
+SaMediaContent >> overview: aContent [
+	overview := aContent
+]
+
+{ #category : #'as yet unclassified' }
 SaMediaContent >> play [
 	self media play
 ]
@@ -32,6 +38,13 @@ SaMediaContent >> stop [
 	self media stop
 ]
 
+{ #category : #accessing }
+SaMediaContent >> videoOverview [
+	^ overview
+		ifNil:
+			[ '#This is a video lesson. Please click on the button to access to the content.' ]
+]
+
 { #category : #'as yet unclassified' }
 SaMediaContent >> whatIsMissing [
 	^ ''
@@ -39,21 +52,19 @@ SaMediaContent >> whatIsMissing [
 
 { #category : #accessing }
 SaMediaContent >> widgetIn: aPresenter [
-
 	| component c |
 	component := aPresenter instantiate: SpDynamicPresenter.
 	component layout: SpBoxLayout newVertical.
-	c := aPresenter newLabel label:
-		     'This is a video lesson. Please click on the button to access to the content.'.
-
+	c := (aPresenter instantiate: SpTextPresenter)
+		text:
+			(MicroDownParser
+				asText: self videoOverview ).
 	component layout add: c.
 	c owner: component.
 	c := aPresenter newButton
-		     label: 'Play video';
-		     action: [ self play ].
-	component layout add: c.
+		label: 'Play video';
+		action: [ self play ].
+	component layout add: c height: 50.
 	c owner: component.
-
-
 	^ component
 ]

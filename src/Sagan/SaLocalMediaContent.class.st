@@ -2,7 +2,8 @@ Class {
 	#name : #SaLocalMediaContent,
 	#superclass : #SaMediaContent,
 	#instVars : [
-		'file'
+		'file',
+		'playing'
 	],
 	#category : #'Sagan-Model'
 }
@@ -32,7 +33,7 @@ SaLocalMediaContent >> openMedia [
 SaLocalMediaContent >> play [
 	LibC
 		runCommand:
-			('{1} {2}'
+			('{1} {2} &'
 				format:
 					{self command.
 					file fullName})
