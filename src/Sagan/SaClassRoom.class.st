@@ -65,19 +65,12 @@ SaClassRoom >> course: aCourse [
 SaClassRoom >> initializeToolbar [
 
 	toolbar addItemLeft: (self newToolbarButton
-			 label: 'Lesson';
-			 icon: (self iconNamed: #add);
-			 help: 'New Lesson';
-			 action: [ self addLesson ];
+			 label: 'Course';
+			 icon: (self iconNamed: #open);
+			 help: 'Open';
+			 action: [ self openCourse ];
 			 yourself).
 
-
-	toolbar addItemLeft: (self newToolbarButton
-			 label: 'Unit';
-			 icon: (self iconNamed: #add);
-			 help: 'New Unit';
-			 action: [ self addUnit ];
-			 yourself)
 ]
 
 { #category : #initialization }
@@ -95,8 +88,17 @@ SaClassRoom >> initializeWidgets [
 	listables addPage:
 		(self newNotebookPageWith: lessonsTable and: 'Lessons').
 	
-	self course: ISENROSCourse course.
 	
+	
+]
+
+{ #category : #initialization }
+SaClassRoom >> openCourse [
+	| courses selected |
+	courses := SaCourse courses.
+	selected := UIManager default chooseFrom: courses keys values: courses values lines: #() message: '' title: 'Please choose a course to open from the available courses'.
+	selected ifNil: [ ^ self inform: 'Non course choosen. Nothing to open' ].
+	self course: selected.
 ]
 
 { #category : #initialization }

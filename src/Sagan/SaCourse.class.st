@@ -5,8 +5,17 @@ Class {
 		'lessons',
 		'title'
 	],
+	#classInstVars : [
+		'courses'
+	],
 	#category : #'Sagan-Model'
 }
+
+{ #category : #accessing }
+SaCourse class >> courses [
+	^ courses
+		ifNil: [ courses := {(#'ROS 1 @ ISEN' -> ISENROSCourse course)} asDictionary ]
+]
 
 { #category : #accessing }
 SaCourse >> addLesson: aLesson [

@@ -23,6 +23,7 @@ SaLocalMediaContent >> file: aFile [
 { #category : #'as yet unclassified' }
 SaLocalMediaContent >> openMedia [
 	| vlc mediaSelector player |
+	self error: 'This method is not really working as VLC binding. since we are having sigsegv issues. We are using simply LibC system'.
 	vlc := VLCLibrary uniqueInstance createVLCInstance.
 	mediaSelector := vlc createMediaFromPath: file fullNameWithIndicator.
 	player := VLCLibrary uniqueInstance mediaPlayerNewFromMedia: mediaSelector.
