@@ -8,7 +8,7 @@ Class {
 BaselineOfSagan >> baseline: spec [
 	<baseline>
 	spec
-		for: #'pharo8.x'
+		for: #common
 		do: [ spec
 				baseline: 'VLC'
 				with: [ spec repository: 'github://badetitou/Pharo-LibVLC' ].
@@ -23,5 +23,5 @@ BaselineOfSagan >> baseline: spec [
 				with: [ spec repository: 'github://pillar-markup/MicroDown' ].
 			spec
 				package: 'Sagan'
-				with: [ spec requires: #(VLC Spec2 MicrodownDev 'Microdown-RichTextComposer') ] ]
+				with: [ spec requires: #(Spec2 MicrodownDev 'Microdown-RichTextComposer') ] ]
 ]

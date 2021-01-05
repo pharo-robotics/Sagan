@@ -11,11 +11,11 @@ Class {
 SaRemoteMediaContent >> openMedia [
 	| vlc mediaSelector player |
 	self error: 'The remote media content sadly is not yet available.'.
-	vlc := VLCLibrary uniqueInstance createVLCInstance.
+"	vlc := VLCLibrary uniqueInstance createVLCInstance.
 	mediaSelector := vlc
 		createMediaFromLocation: url asString .
 	player := VLCLibrary uniqueInstance mediaPlayerNewFromMedia: mediaSelector.
-	^ player
+	^ player"
 ]
 
 { #category : #accessing }
