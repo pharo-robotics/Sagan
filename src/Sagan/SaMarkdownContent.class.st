@@ -21,7 +21,7 @@ SaMarkdownContent >> isSatisfied [
 SaMarkdownContent >> widgetIn: aPresenter [
 
 	| text |
-	text := aPresenter newText.
+	text := aPresenter instantiate: SaText.
 	text text: (MicroDownParser asText: content).
 	^ text
 ]

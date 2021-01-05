@@ -2,11 +2,16 @@ Class {
 	#name : #SaOpenQuestionList,
 	#superclass : #SaUnit,
 	#instVars : [
-		'questions',
-		'state'
+		'questionaire'
 	],
 	#category : #'Sagan-Model'
 }
+
+{ #category : #accessing }
+SaOpenQuestionList >> initialize [
+	super initialize.
+	questionaire := SaQuestionaire new
+]
 
 { #category : #accessing }
 SaOpenQuestionList >> isSatisfied [
@@ -16,40 +21,28 @@ SaOpenQuestionList >> isSatisfied [
 ]
 
 { #category : #accessing }
-SaOpenQuestionList >> questions: aCollection [ 
-	questions := aCollection 
+SaOpenQuestionList >> questions: aCollection [
+	questionaire
+		questions:
+			(aCollection
+				collect: [ :q | 
+					SaOpenQuestion new
+						question: q;
+						yourself ])
 ]
 
 { #category : #accessing }
 SaOpenQuestionList >> state [
 
-	^ state ifNil: [ state := Dictionary new ]
+	^	questionaire state
 ]
 
 { #category : #accessing }
 SaOpenQuestionList >> whatIsMissing [
-	^ 'The following questions are not responded: ' , String crlf
-	  , (String crlf join:
-			   (questions select: [ :q | 
-				    (self state at: q ifAbsent: '') isEmpty ]))
+	^ questionaire whatIsMissing
 ]
 
 { #category : #accessing }
 SaOpenQuestionList >> widgetIn: aPresenter [
-
-	| list components |
-	list := aPresenter newComponentList.
-
-	components := OrderedCollection new.
-	questions do: [ :q | 
-		| questionWidget |
-		questionWidget := SaOpenQuestionWidget new.
-		questionWidget question: q.
-		questionWidget answer: (self state at: q ifAbsent: [ '' ]).
-		questionWidget whenTextChangedDo: [ : s | 
-			self state at: q put: questionWidget answer 
-		].
-		components add: questionWidget ].
-	list items: components.
-	^ list
+	^ questionaire widgetIn: aPresenter
 ]

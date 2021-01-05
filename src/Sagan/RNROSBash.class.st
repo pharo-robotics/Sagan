@@ -1,11 +1,11 @@
 Class {
-	#name : #ISENROSBash,
-	#superclass : #ISENROSLesson,
-	#category : #'Sagan-ISENRos'
+	#name : #RNROSBash,
+	#superclass : #RNROSLesson,
+	#category : #'Sagan-RobotsDuNordROS'
 }
 
 { #category : #'as yet unclassified' }
-ISENROSBash >> bashExercises [
+RNROSBash >> bashExercises [
 	^ SaMarkdownContent new
 		  title: 'Exercises';
 		  content: (self filesystem / 'exercises.md') readStream upToEnd;
@@ -13,7 +13,7 @@ ISENROSBash >> bashExercises [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSBash >> bashHistory [
+RNROSBash >> bashHistory [
 	^ SaMarkdownContent new
 		  title: 'Bash';
 		  content: (self filesystem / 'bash.md') readStream upToEnd;
@@ -21,7 +21,7 @@ ISENROSBash >> bashHistory [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSBash >> bashQuiz [
+RNROSBash >> bashQuiz [
 	| questions |
 	questions := OrderedCollection new.
 	questions
@@ -59,7 +59,7 @@ ISENROSBash >> bashQuiz [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSBash >> bashTutorial [
+RNROSBash >> bashTutorial [
 	^ SaLocalMediaContent new
 		title: 'Bash Tutorial';
 		file: self filesystem / 'bash-tutorial.mp4';
@@ -68,15 +68,14 @@ ISENROSBash >> bashTutorial [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSBash >> filesystem [ 
+RNROSBash >> filesystem [ 
 	^ super filesystem / #bash 
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSBash >> lesson [
+RNROSBash >> lesson [
 	^ SaLesson new
 		title: 'Bash';
-		addUnit: self bashTutorial;
 		addUnit: self objectives;
 		addUnit: self whatIsBash;
 		addUnit: self bashHistory;
@@ -88,7 +87,7 @@ ISENROSBash >> lesson [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSBash >> whatIsBash [
+RNROSBash >> whatIsBash [
 	^ SaMultipleChoiceQuestion new
 		title: 'Quiz #1: Bash';
 		question: 'Qu''est-ce que ce Bash? ';

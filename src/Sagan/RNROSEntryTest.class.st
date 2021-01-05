@@ -22,13 +22,13 @@ Vous risquez de perdre vos reponses.
 
 "
 Class {
-	#name : #ISENROSEntryTest,
+	#name : #RNROSEntryTest,
 	#superclass : #Object,
-	#category : #'Sagan-ISENRos'
+	#category : #'Sagan-RobotsDuNordROS'
 }
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> concepts [
+RNROSEntryTest >> concepts [
 
 	^ SaOpenQuestionList new
 		  title: 'Concepts';
@@ -43,7 +43,7 @@ ISENROSEntryTest >> concepts [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> demographicQuestions [
+RNROSEntryTest >> demographicQuestions [
 
 	^ SaSatisfactionQuestionTable new
 		  title: 'Questions generaux';
@@ -60,7 +60,7 @@ ISENROSEntryTest >> demographicQuestions [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> explanation [
+RNROSEntryTest >> explanation [
 
 	^ SaMarkdownContent new
 		  title: 'État de lieux';
@@ -69,7 +69,7 @@ ISENROSEntryTest >> explanation [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> math [
+RNROSEntryTest >> math [
 
 	^ SaOpenQuestionList new
 		  title: 'Math';
@@ -82,7 +82,7 @@ ISENROSEntryTest >> math [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> network [
+RNROSEntryTest >> network [
 
 	^ SaOpenQuestionList new
 		  title: 'Réseaux.';
@@ -95,7 +95,7 @@ ISENROSEntryTest >> network [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> operativeSystems [
+RNROSEntryTest >> operativeSystems [
 
 	^ SaOpenQuestionList new
 		  title: 'Systeme d''Explotation';
@@ -107,7 +107,7 @@ ISENROSEntryTest >> operativeSystems [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> programmingLanguages [
+RNROSEntryTest >> programmingLanguages [
 
 	^ SaOpenQuestionList new
 		  title: 'Langage de programamtion ';
@@ -123,7 +123,7 @@ ISENROSEntryTest >> programmingLanguages [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> sourceVersionControl [
+RNROSEntryTest >> sourceVersionControl [
 
 	^ SaOpenQuestionList new
 		  title: 'Systeme de control des versions';
@@ -137,7 +137,7 @@ ISENROSEntryTest >> sourceVersionControl [
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSEntryTest >> test [
+RNROSEntryTest >> test [
 
 	^ SaLesson new
 		  title: 'Intro Test';
@@ -153,6 +153,6 @@ ISENROSEntryTest >> test [
 ]
 
 { #category : #tests }
-ISENROSEntryTest >> testExplanation [
+RNROSEntryTest >> testExplanation [
 	^ self class comment
 ]

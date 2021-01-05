@@ -1,22 +1,22 @@
 Class {
-	#name : #ISENROSCourse,
+	#name : #RNROSCourse,
 	#superclass : #Object,
-	#category : #'Sagan-ISENRos'
+	#category : #'Sagan-RobotsDuNordROS'
 }
 
 { #category : #'as yet unclassified' }
-ISENROSCourse class >> course [
+RNROSCourse class >> course [
 
 	^ self new course
 ]
 
 { #category : #combining }
-ISENROSCourse >> bash [
-	^ ISENROSBash new lesson.
+RNROSCourse >> bash [
+	^ RNROSBash new lesson.
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> course [
+RNROSCourse >> course [
 
 	^ SaCourse new
 		  title: 'ROS';
@@ -35,62 +35,62 @@ ISENROSCourse >> course [
 ]
 
 { #category : #'command line' }
-ISENROSCourse >> git [
+RNROSCourse >> git [
 
-	^ SaLesson new title: 'GIT'
+	^ RNROSGit new lesson
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> launchLesson [
+RNROSCourse >> launchLesson [
 	^ SaLesson new title: 'ROS Launch Files'
 ]
 
 { #category : #combining }
-ISENROSCourse >> linux [
-	^ ISENROSLinux new lesson.
+RNROSCourse >> linux [
+	^ RNROSLinux new lesson.
 ]
 
 { #category : #accessing }
-ISENROSCourse >> nodes [
+RNROSCourse >> nodes [
 
 	^ SaLesson new title: 'ROS Nodes'
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> pathPlanning [
+RNROSCourse >> pathPlanning [
 	^ SaLesson new title: 'Path Planning'
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> roscommands [
+RNROSCourse >> roscommands [
 	^ SaLesson new title: 'ROS Commands'
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> serviceLesson [
+RNROSCourse >> serviceLesson [
 
 	^ SaLesson new title: 'ROS Services'
 ]
 
 { #category : #accessing }
-ISENROSCourse >> summary [
+RNROSCourse >> summary [
 
 	^ SaLesson new title: 'Summary'
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> test [
+RNROSCourse >> test [
 
-	^ ISENROSEntryTest new test
+	^ RNROSEntryTest new test
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> topics [
+RNROSCourse >> topics [
 	^ SaLesson new title: 'Topics'
 ]
 
 { #category : #'as yet unclassified' }
-ISENROSCourse >> turtlebot [
+RNROSCourse >> turtlebot [
 
 	^ SaLesson new title: 'Introduction to Turtlebot'
 ]

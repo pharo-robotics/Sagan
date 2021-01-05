@@ -34,7 +34,7 @@ SaOpenQuestion >> question: aString [
 
 { #category : #'as yet unclassified' }
 SaOpenQuestion >> response [
-	^ state ifNil: [ self halt ]
+	^ state ifEmpty: [ 'Not responded' ]
 ]
 
 { #category : #initialization }

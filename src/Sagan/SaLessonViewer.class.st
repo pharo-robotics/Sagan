@@ -6,7 +6,6 @@ Class {
 		'previousButton',
 		'nextButton',
 		'content',
-		'ribbon',
 		'progress',
 		'unitTitleLabel'
 	],
@@ -15,16 +14,18 @@ Class {
 
 { #category : #specs }
 SaLessonViewer class >> defaultSpec [
-
 	^ SpBoxLayout newVertical
-		  add: #unitTitleLabel height: self toolbarHeight;
-		  add: #progress height: 10;
-		  add: (SpBoxLayout newHorizontal
-				   add: #previousButton width: self toolbarHeight;
-				   add: #content;
-				   add: #nextButton width: self toolbarHeight;
-				   yourself);
-		  yourself
+		add: #unitTitleLabel height: self toolbarHeight;
+		add: #content;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #previousButton width: 150 ;
+				add: #progress;
+				add: #nextButton width: 150;
+				yourself)
+		height: 50;
+		
+		yourself
 ]
 
 { #category : #accessing }
@@ -46,8 +47,7 @@ SaLessonViewer >> initializeWidgets [
 
 	progress := self newProgressBar.
 	progress fixedPercentage: 0.
-	ribbon := self newProgressBar.
-	ribbon fixedPercentage: 0.
+
 	unitTitleLabel := self newTextInput.
 	unitTitleLabel enabled: false .
 	self updateLesson

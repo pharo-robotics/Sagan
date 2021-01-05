@@ -1,16 +1,16 @@
 Class {
-	#name : #ISENROSLinux,
-	#superclass : #ISENROSLesson,
-	#category : #'Sagan-ISENRos'
+	#name : #RNROSLinux,
+	#superclass : #RNROSLesson,
+	#category : #'Sagan-RobotsDuNordROS'
 }
 
 { #category : #accessing }
-ISENROSLinux >> filesystem [ 
+RNROSLinux >> filesystem [ 
 	^ super filesystem / #linux 
 ]
 
 { #category : #accessing }
-ISENROSLinux >> gettingOurEnvironmentRunning [
+RNROSLinux >> gettingOurEnvironmentRunning [
 	^ SaLocalMediaContent new
 		title: 'Setting the environment: Installing ROS';
 		file: self filesystem / 'gettingTheEnvironmentRunning.mp4';
@@ -19,7 +19,7 @@ ISENROSLinux >> gettingOurEnvironmentRunning [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> installUbuntu [
+RNROSLinux >> installUbuntu [
 	^ SaLocalMediaContent new
 		title: 'Installer Ubuntu';
 		file: self filesystem / 'installingUbuntu.mp4';
@@ -28,7 +28,7 @@ ISENROSLinux >> installUbuntu [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> lesson [
+RNROSLinux >> lesson [
 	^ SaLesson new
 		title: 'Linux';
 		addUnit: self objectives;
@@ -48,7 +48,7 @@ ISENROSLinux >> lesson [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> linuxQuiz [
+RNROSLinux >> linuxQuiz [
 	| questions |
 	questions := OrderedCollection new.
 	questions
@@ -79,7 +79,7 @@ ISENROSLinux >> linuxQuiz [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> quizGettingOurEnvironmentRunning [
+RNROSLinux >> quizGettingOurEnvironmentRunning [
 	| questions |
 	questions := OrderedCollection new.
 	questions
@@ -120,7 +120,7 @@ ISENROSLinux >> quizGettingOurEnvironmentRunning [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> quizUbuntuInstallation [
+RNROSLinux >> quizUbuntuInstallation [
 	| questions |
 	questions := OrderedCollection new.
 	questions
@@ -165,7 +165,7 @@ ISENROSLinux >> quizUbuntuInstallation [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> someHistory [
+RNROSLinux >> someHistory [
 
 	^ SaMarkdownContent new
 		  title: 'History';
@@ -174,7 +174,7 @@ ISENROSLinux >> someHistory [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> ubuntu [
+RNROSLinux >> ubuntu [
 
 	^ SaMarkdownContent new
 		  title: 'Ubuntu';
@@ -183,7 +183,7 @@ ISENROSLinux >> ubuntu [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> ubuntuQuiz [
+RNROSLinux >> ubuntuQuiz [
 
 	| questions |
 	questions := OrderedCollection new.
@@ -203,7 +203,7 @@ ISENROSLinux >> ubuntuQuiz [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> vboxQuiz [
+RNROSLinux >> vboxQuiz [
 
 	| questions |
 	questions := OrderedCollection new.
@@ -232,7 +232,7 @@ ISENROSLinux >> vboxQuiz [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> virtualBox [
+RNROSLinux >> virtualBox [
 
 	^ SaMarkdownContent new
 		  title: 'Virtualization';
@@ -241,7 +241,7 @@ ISENROSLinux >> virtualBox [
 ]
 
 { #category : #accessing }
-ISENROSLinux >> whatIsLinuxMC [
+RNROSLinux >> whatIsLinuxMC [
 
 	^ SaMultipleChoiceQuestion new
 	     title: 'Quiz #1: Linux';

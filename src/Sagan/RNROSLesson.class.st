@@ -1,22 +1,22 @@
 Class {
-	#name : #ISENROSLesson,
+	#name : #RNROSLesson,
 	#superclass : #Object,
-	#category : #'Sagan-ISENRos'
+	#category : #'Sagan-RobotsDuNordROS'
 }
 
 { #category : #'as yet unclassified' }
-ISENROSLesson >> filesystem [
+RNROSLesson >> filesystem [
 
 	^ 'pharo-local/iceberg/sbragagnolo/sagan/contents' asFileReference
 ]
 
 { #category : #accessing }
-ISENROSLesson >> lesson [ 
+RNROSLesson >> lesson [ 
 	self subclassResponsibility 
 ]
 
 { #category : #accessing }
-ISENROSLesson >> objectives [
+RNROSLesson >> objectives [
 
 	^ SaMarkdownContent new
 		  title: 'Objectives';
@@ -25,7 +25,7 @@ ISENROSLesson >> objectives [
 ]
 
 { #category : #accessing }
-ISENROSLesson >> summary [
+RNROSLesson >> summary [
 	^ SaFinish new
 		title: 'Summary';
 		content: (self filesystem / 'summary.md') readStream upToEnd;

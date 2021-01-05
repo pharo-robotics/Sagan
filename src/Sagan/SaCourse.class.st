@@ -13,7 +13,7 @@ Class {
 
 { #category : #accessing }
 SaCourse class >> courses [
-	^ {(#'ROS 1 @ ISEN' -> ISENROSCourse course)} asDictionary	"courses
+	^ {(#'ROS 1 @ ISEN' -> RNROSCourse course)} asDictionary	"courses
 		ifNil: [ courses := "	" ]"
 ]
 

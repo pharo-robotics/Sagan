@@ -61,7 +61,8 @@ SaQuestionaireWidget >> newQuestionaireTable [
 ]
 
 { #category : #initialization }
-SaQuestionaireWidget >> questionaire: aQuestionaire [ 
+SaQuestionaireWidget >> questionaire: aQuestionaire [
 	questionare := aQuestionaire.
-	table items: questionare questions
+	table items: questionare questions.
+	table selectItem: table items first
 ]
