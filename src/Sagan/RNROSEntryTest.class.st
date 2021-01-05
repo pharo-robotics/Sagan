@@ -70,15 +70,14 @@ RNROSEntryTest >> explanation [
 
 { #category : #'as yet unclassified' }
 RNROSEntryTest >> math [
-
 	^ SaOpenQuestionList new
-		  title: 'Math';
-		  questions:
-			  { 'Que sont les quaternions?'. 'Quelle est la notation de la représentation angulaire d''Euler?'.
-			  'Comparez rapidement les coordonnées cartésiennes et polaires'.
-			  'Expliquez rapidement l''idée de la transformation des coordonnées (ou de la transformation du système).'.
-			  'Quelles sont les opérations matricielles et vectorielles que vous connaissez?' };
-		  yourself
+		title: 'Math';
+		questions:
+			{'Que sont les quaternions?' . 'Quelle est la notation de la représentation angulaire d''Euler?'.
+			'Comparez rapidement les coordonnées cartésiennes et polaires'.
+			'Expliquez rapidement l''idée de la transformation des coordonnées (ou de la transformation du système).'.
+			'Quelles sont les opérations matricielles et vectorielles que vous connaissez?'};
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
