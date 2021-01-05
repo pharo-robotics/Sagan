@@ -18,7 +18,7 @@ SaClassRoom class >> defaultSpec [
 		add: #toolbar height: self toolbarHeight * 1.5;
 		add:
 			(SpPanedLayout newHorizontal
-				position: 20 percent;
+				position: 15 percent;
 				add: #listables;
 				add: #preview;
 				yourself);
