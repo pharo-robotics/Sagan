@@ -32,6 +32,11 @@ SaOpenQuestion >> question: aString [
 	question := aString
 ]
 
+{ #category : #'as yet unclassified' }
+SaOpenQuestion >> response [
+	^ state ifNil: [ self halt ]
+]
+
 { #category : #initialization }
 SaOpenQuestion >> state: aResponse [
  	state := aResponse 

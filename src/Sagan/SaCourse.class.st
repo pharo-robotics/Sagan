@@ -13,8 +13,8 @@ Class {
 
 { #category : #accessing }
 SaCourse class >> courses [
-	^ courses
-		ifNil: [ courses := {(#'ROS 1 @ ISEN' -> ISENROSCourse course)} asDictionary ]
+	^ {(#'ROS 1 @ ISEN' -> ISENROSCourse course)} asDictionary	"courses
+		ifNil: [ courses := "	" ]"
 ]
 
 { #category : #accessing }
@@ -28,7 +28,7 @@ SaCourse >> addLesson: aLesson [
 SaCourse >> initialize [
 
 	super initialize.
-	lessons := SortedCollection sortBlock: [ :l :l2 | l order < l2 order ]
+	lessons := OrderedCollection new
 ]
 
 { #category : #accessing }

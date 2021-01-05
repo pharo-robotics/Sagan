@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+SaUnit >> isFinal [
+	^ false
+]
+
+{ #category : #accessing }
 SaUnit >> isSatisfied [ 
 	self subclassResponsibility 
 ]

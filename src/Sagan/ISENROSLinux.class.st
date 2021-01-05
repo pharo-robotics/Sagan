@@ -12,7 +12,7 @@ ISENROSLinux >> filesystem [
 { #category : #accessing }
 ISENROSLinux >> gettingOurEnvironmentRunning [
 	^ SaLocalMediaContent new
-		title: 'Installer Ubuntu';
+		title: 'Setting the environment: Installing ROS';
 		file: self filesystem / 'gettingTheEnvironmentRunning.mp4';
 		overview: self filesystem / 'gettingTheEnvironmentRunning.md';
 		yourself
@@ -49,89 +49,119 @@ ISENROSLinux >> lesson [
 
 { #category : #accessing }
 ISENROSLinux >> linuxQuiz [
-
 	| questions |
 	questions := OrderedCollection new.
-	questions add: (SaMultipleChoiceQuestion new
-			 question:
-				 'Qu''est-ce que ce la difference entre GNU/Linux et Windows, MacOS, etc? ';
-			 choices: { 'Système d''exploitation libre'.
-				 'La couleur' };
-			 yourself).
-	questions add: (SaOpenQuestion new
-			 question: 'Expliquez COPY-LEFT avec vos mots ';
-			 yourself).
+	questions
+		add:
+			(SaMultipleChoiceQuestion new
+				question:
+					'Qu''est-ce que ce la difference entre GNU/Linux et Windows, MacOS, etc? ';
+				choices:
+					{'Système d''exploitation libre' . 'La couleur' . 'L''architecture du kernel'};
+				yourself).
+	questions
+		add:
+			(SaMultipleChoiceQuestion new
+				singleResponse: false;
+				question: 'Qu''est-ca veut dire "GPL"';
+				choices:
+					{'Licence publique générale' . 'GNU Not Unix' . 'License gratuite'};
+				yourself).
+	questions
+		add:
+			(SaOpenQuestion new
+				question: 'Expliquez COPY-LEFT avec vos mots ';
+				yourself).
 	^ SaQuestionaire new
-		  title: 'Quiz #2: GNU/Linux';
-		  questions: questions reverse;
-		  yourself
-]
-
-{ #category : #accessing }
-ISENROSLinux >> objectives [
-
-	^ SaMarkdownContent new
-		  title: 'Objectives';
-		  content: (self filesystem / 'objectives.md') readStream upToEnd;
-		  yourself
+		title: 'Quiz #2: GNU/Linux';
+		questions: questions;
+		yourself
 ]
 
 { #category : #accessing }
 ISENROSLinux >> quizGettingOurEnvironmentRunning [
-
 	| questions |
 	questions := OrderedCollection new.
-	questions add: (SaMultipleChoiceQuestion new
-			 question: 'A quoi ça serve la virtualization?';
-			 singleResponse: false;
-			 choices:
-				 { 'Maximizer l''utilization des resources computationelles'.
-				 'Minimizer le gaspillage d''electricité'.
-				 'Faciliter la modularization des systemes' };
-			 yourself).
-				questions add: (SaMultipleChoiceQuestion new
-			 question: 'Qu''est-ce qu''on trouve en common entre Linux et Virtualbox?';
-			 choices:
-				 { 'Ils sont partie de la famille GNU'.
-				 'Ils sont developpe que pour travailler avec les architectures  x86 et AMD64/Intel64'.
-				 'Apartiens a Oracle' };
-			 yourself).
-	questions add: (SaOpenQuestion new
-			 question: 'Expliquez avec vos mot pour quoi est-ce que vous pensez que c''est important l''utilization de virtual box dans notre cours';
-			 yourself).
+	questions
+		add:
+			(SaMultipleChoiceQuestion new
+				question: 'Quelle version de ROS on a installé?';
+				singleResponse: false;
+				choices: {'Groovy' . 'Noetic' . 'Fuerte' . 'Hydro'};
+				yourself).
+	questions
+		add:
+			(SaMultipleChoiceQuestion new
+				question: 'Comment s''appelle le fichier qu''on a modifié manualement?';
+				choices: {'profile' . '.batch' . '.bashrc'};
+				yourself).
+	questions
+		add:
+			(SaMultipleChoiceQuestion new
+				question: 'Comment s''appelle la commande utilisée pour installer ROS?';
+				choices: {'apt-get' . 'sudo' . 'install'};
+				yourself).
+	questions
+		add:
+			(SaOpenQuestion new
+				question:
+					'Expliquez avec vos mot a quoi serve les premiere deux pas de la installation';
+				yourself).
+	questions
+		add:
+			(SaOpenQuestion new
+				question:
+					'Est-ce que vous avez des remarques a faire sur le video? (retour pour le professeur)';
+				yourself).
 	^ SaQuestionaire new
-		  title: 'Quiz #4: Virtualization';
-		  questions: questions reverse;
-		  yourself
+		title: 'Quiz #6: Installation Environnement';
+		questions: questions;
+		yourself
 ]
 
 { #category : #accessing }
 ISENROSLinux >> quizUbuntuInstallation [
-
 	| questions |
 	questions := OrderedCollection new.
-	questions add: (SaMultipleChoiceQuestion new
-			 question: 'A quoi ça serve la virtualization?';
-			 singleResponse: false;
-			 choices:
-				 { 'Maximizer l''utilization des resources computationelles'.
-				 'Minimizer le gaspillage d''electricité'.
-				 'Faciliter la modularization des systemes' };
-			 yourself).
-				questions add: (SaMultipleChoiceQuestion new
-			 question: 'Qu''est-ce qu''on trouve en common entre Linux et Virtualbox?';
-			 choices:
-				 { 'Ils sont partie de la famille GNU'.
-				 'Ils sont developpe que pour travailler avec les architectures  x86 et AMD64/Intel64'.
-				 'Apartiens a Oracle' };
-			 yourself).
-	questions add: (SaOpenQuestion new
-			 question: 'Expliquez avec vos mot pour quoi est-ce que vous pensez que c''est important l''utilization de virtual box dans notre cours';
-			 yourself).
+	questions
+		add:
+			(SaMultipleChoiceQuestion new
+				question: 'Que type de disque dure on a choisi? ';
+				singleResponse: false;
+				choices:
+					{'Dynamiquement alloué' . 'Statiquement alloué' . 'Allocation hybride'};
+				yourself).
+	questions
+		add:
+			(SaMultipleChoiceQuestion new
+				question: 'Combien de memoire on a donné a la machine virtuelle?';
+				choices:
+					{'Un tout petit peu, sufficement pour demarrer'.
+					'Jusqu''a la limite de partie verte de la ligne'.
+					'La totalite de la memoire'};
+				yourself).
+	questions
+		add:
+			(SaOpenQuestion new
+				question:
+					'Pour quoi on a pas donné plus ou moins de memoire a la machine virtuelle? ';
+				yourself).
+	questions
+		add:
+			(SaOpenQuestion new
+				question:
+					'Pour quoi on a decidé de ne pas mettre a jour le systeme pendant l''instalation d''ubuntu?';
+				yourself).
+	questions
+		add:
+			(SaOpenQuestion new
+				question:
+					'Est-ce que vous avez des remarques a faire sur le video? (retour pour le professeur)';
+				yourself).
 	^ SaQuestionaire new
-		  title: 'Quiz #4: Virtualization';
-		  questions: questions reverse;
-		  yourself
+		title: 'Quiz #5: Installation ubuntu';
+		questions: questions shuffle;
+		yourself
 ]
 
 { #category : #accessing }
@@ -140,15 +170,6 @@ ISENROSLinux >> someHistory [
 	^ SaMarkdownContent new
 		  title: 'History';
 		  content: (self filesystem / 'history.md') readStream upToEnd;
-		  yourself
-]
-
-{ #category : #accessing }
-ISENROSLinux >> summary [
-
-	^ SaMarkdownContent new
-		  title: 'Summary';
-		  content: (self filesystem / 'summary.md') readStream upToEnd;
 		  yourself
 ]
 

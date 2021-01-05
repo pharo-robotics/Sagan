@@ -12,7 +12,7 @@ ISENROSCourse class >> course [
 
 { #category : #combining }
 ISENROSCourse >> bash [
-	^ SaLesson new title: 'Bash'
+	^ ISENROSBash new lesson.
 ]
 
 { #category : #'as yet unclassified' }

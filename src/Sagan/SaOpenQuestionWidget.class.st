@@ -13,7 +13,7 @@ SaOpenQuestionWidget class >> defaultSpec [
 
 	^ SpBoxLayout newVertical
 		  add: #questionLabel height: self toolbarHeight * 1.5;
-		  add: #answerLabel height: self toolbarHeight * 5
+		  add: #answerLabel 
 ]
 
 { #category : #initialization }

@@ -24,7 +24,6 @@ SaLessonViewer class >> defaultSpec [
 				   add: #content;
 				   add: #nextButton width: self toolbarHeight;
 				   yourself);
-		  add: #ribbon height: 50;
 		  yourself
 ]
 

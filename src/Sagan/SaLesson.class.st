@@ -46,7 +46,6 @@ SaLesson >> export [
 		UIManager default alert:
 			'The file already exist. (' , file fullname , ')' ].
 	stream := file writeStream.
-
 	STON put: self onStream: stream.
 	stream
 		flush;
@@ -63,19 +62,21 @@ SaLesson >> finish [
 SaLesson >> initialize [
 
 	super initialize.
-	units := SortedCollection sortBlock: [ :l :l2 | l order < l2 order ].
+	units := OrderedCollection new.
 	current := 1.
 ]
 
 { #category : #accessing }
 SaLesson >> next [
 	self start.
-	self current isSatisfied ifFalse: [ 
-		^ self error: self current whatIsMissing ].
+	self current isFinal
+		ifTrue: [ ^ self ].
+	self current isSatisfied
+		ifFalse: [ ^ self error: self current whatIsMissing ].
 	current := current + 1.
 	^ current > units size
-		  ifTrue: [ self finish ]
-		  ifFalse: [ units at: current ]
+		ifTrue: [ self finish ]
+		ifFalse: [ units at: current ]
 ]
 
 { #category : #accessing }
@@ -100,6 +101,31 @@ SaLesson >> previous [
 { #category : #accessing }
 SaLesson >> reset [
 	current := 1 .
+]
+
+{ #category : #'as yet unclassified' }
+SaLesson >> review [
+	| room |
+	room := SaClassRoom new.
+	room
+		course:
+			(SaCourse new
+				addLesson: self;
+				yourself).
+	room openWithSpec
+]
+
+{ #category : #'as yet unclassified' }
+SaLesson >> reviewStudent: aStudentName [
+	| room |
+	title := title , ' (' , aStudentName , ')'.
+	room := SaClassRoom new.
+	room
+		course:
+			(SaCourse new
+				addLesson: self;
+				yourself).
+	room openWithSpec
 ]
 
 { #category : #accessing }

@@ -73,9 +73,14 @@ SaMultipleChoiceWidget >> initializeWidgets [
 
 { #category : #initialization }
 SaMultipleChoiceWidget >> multipleChoiceQuestion: aQuestion [
-
 	multipleChoiceQuestion := aQuestion.
-	questionLabel label: aQuestion question. 
+	questionLabel
+		label:
+			aQuestion question
+				,
+					(aQuestion isSingleResponse not
+						ifTrue: [ '(This question may have 1 or more responses)' ]
+						ifFalse: [ '' ]).
 	choicesList items: aQuestion choices
 ]
 

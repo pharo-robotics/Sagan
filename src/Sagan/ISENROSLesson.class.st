@@ -14,3 +14,20 @@ ISENROSLesson >> filesystem [
 ISENROSLesson >> lesson [ 
 	self subclassResponsibility 
 ]
+
+{ #category : #accessing }
+ISENROSLesson >> objectives [
+
+	^ SaMarkdownContent new
+		  title: 'Objectives';
+		  content: (self filesystem / 'objectives.md') readStream upToEnd;
+		  yourself
+]
+
+{ #category : #accessing }
+ISENROSLesson >> summary [
+	^ SaFinish new
+		title: 'Summary';
+		content: (self filesystem / 'summary.md') readStream upToEnd;
+		yourself
+]

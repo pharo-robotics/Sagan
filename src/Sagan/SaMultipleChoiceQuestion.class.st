@@ -54,6 +54,15 @@ SaMultipleChoiceQuestion >> question: aQuestion [
 	
 ]
 
+{ #category : #'as yet unclassified' }
+SaMultipleChoiceQuestion >> response [
+	self state associations
+		do: [ :a | 
+			a value = true
+				ifTrue: [ ^ a key ] ].
+	^ 'Not responded'
+]
+
 { #category : #accessing }
 SaMultipleChoiceQuestion >> setResponse: aResponse [
 

@@ -14,6 +14,11 @@ SaQuestionaire >> isSatisfied [
 ]
 
 { #category : #'as yet unclassified' }
+SaQuestionaire >> questions [
+	^ questions
+]
+
+{ #category : #'as yet unclassified' }
 SaQuestionaire >> questions: someQuestions [
 
 	questions := someQuestions
@@ -37,9 +42,9 @@ SaQuestionaire >> whatIsMissing [
 SaQuestionaire >> widgetIn: aPresenter [
 
 	| list components |
-	list := aPresenter newComponentList.
-
-	components := questions collect: [ :q | (q widgetIn: aPresenter ) beShowAllOptions ].
-	list items: components.
+	list := aPresenter instantiate: SaQuestionaireWidget .
+	list questionaire: self. 
+	"components := questions collect: [ :q | (q widgetIn: aPresenter ) beShowAllOptions ].
+	list items: components."
 	^ list
 ]
