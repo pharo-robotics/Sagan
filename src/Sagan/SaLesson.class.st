@@ -51,6 +51,17 @@ SaLesson >> current [
 ]
 
 { #category : #'as yet unclassified' }
+SaLesson >> export [
+
+	| dir |
+	dir := UIManager default
+		       chooseDirectory: 'Choose a path for exporting'
+		       path: FileLocator home asFileReference.
+	dir ifNil: [ ^ self inform: 'Exporting cancelled' ].
+	self export: dir
+]
+
+{ #category : #'as yet unclassified' }
 SaLesson >> export: dir [
 
 	| file stream |
@@ -67,6 +78,32 @@ SaLesson >> export: dir [
 SaLesson >> finish [
 	finishedDate ifNotNil: [ finishedDate := DateAndTime now ].
 	^ SaLessonSummary new
+]
+
+{ #category : #'as yet unclassified' }
+SaLesson >> githubSubmit [
+	
+	| dir |
+	dir := FileLocator home / '.sagan'.
+	dir ensureCreateDirectory.
+	(dir / '.git') exists ifFalse: [ 
+		| username |
+		username := UIManager default
+			            request: 'Please enter your github account USER NAME'
+			            initialAnswer: (Author fullNamePerSe ifNil: [ '' ]).
+		username ifNil: [ 
+			UIManager default alert: 'Imposible to submit without Username'.
+			^ self ].
+		LibC runCommand:
+			('cd {1}; git clone git@github.com:isen-ros/{2}.git .' format: { 
+					 dir fullName.
+					 username }) ].
+	self export: dir.
+	LibC resultOfCommand:
+		('cd {1}; git add . ; git commit -m "Submitting {2}" ; git pull ; git push  ' 
+			 format: { 
+					 dir fullName.
+					 title })
 ]
 
 { #category : #accessing }
@@ -148,27 +185,14 @@ SaLesson >> start [
 { #category : #'as yet unclassified' }
 SaLesson >> submit [
 
-	| dir |
-	dir := FileLocator home / '.sagan'.
-	dir ensureCreateDirectory.
-	(dir / '.git') exists ifFalse: [ 
-		| username |
-		username := UIManager default
-			            request: 'Please enter your github account USER NAME'
-			            initialAnswer: (Author fullNamePerSe ifNil: [ '' ]).
-		username ifNil: [ 
-			UIManager default alert: 'Imposible to submit without Username'.
-			^ self ].
-		LibC runCommand:
-			('cd {1}; git clone git@github.com:isen-ros/{2}.git .' format: { 
-					 dir fullName.
-					 username }) ].
-	self export: dir.
-	LibC resultOfCommand:
-		('cd {1}; git add . ; git commit -m "Submitting {2}" ; git pull ; git push  ' 
-			 format: { 
-					 dir fullName.
-					 title })
+	(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])not
+		ifTrue: [ self githubSubmit ]
+		ifFalse: [ 
+			UIManager default alert:
+				'Meanwhile working on windows, Sagan cannot connect directly to github. 
+We are going to proceed to export the assignement. 
+For finishing the submition you have to manually upload the file to your assigned repository'.
+					self export ]
 ]
 
 { #category : #accessing }
