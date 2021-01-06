@@ -1,3 +1,15 @@
+"
+#Lesson
+I represent a lesson on-going. 
+I hold the units but i mix the behaviour of passing by the lesson . Not sure is the best strategy, but is simple and so far good enough. 
+
+I track the date when i have been started. 
+I have an order to be prioritized by the course (lesson 1, 2, 3 etc)
+
+I understand the messages next, previous and backToFirstUnit that allow to handle where is the student .
+
+Finally, I have a title :) 
+"
 Class {
 	#name : #SaLesson,
 	#superclass : #Object,
@@ -20,16 +32,21 @@ SaLesson >> addUnit: aSaMarkdownContent [
 ]
 
 { #category : #accessing }
+SaLesson >> backToFirstUnit [
+	current := 1.
+]
+
+{ #category : #accessing }
 SaLesson >> completedPct [
 
-	^ 100 * current / units size
+	^ 100 * current / (units size max: 1).
 ]
 
 { #category : #accessing }
 SaLesson >> current [
 
 	^ current > units size
-		  ifTrue: [ SaFinish new ]
+		  ifTrue: [ SaLessonSummary new ]
 		  ifFalse: [ units at: current ]
 ]
 
@@ -55,7 +72,7 @@ SaLesson >> export [
 { #category : #accessing }
 SaLesson >> finish [
 	finishedDate ifNotNil: [ finishedDate := DateAndTime now ].
-	^ SaFinish new
+	^ SaLessonSummary new
 ]
 
 { #category : #accessing }

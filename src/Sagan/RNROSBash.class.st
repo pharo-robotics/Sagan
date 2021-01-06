@@ -1,3 +1,6 @@
+"
+I explain bash 
+"
 Class {
 	#name : #RNROSBash,
 	#superclass : #RNROSLesson,
@@ -91,7 +94,7 @@ RNROSBash >> whatIsBash [
 	^ SaMultipleChoiceQuestion new
 		title: 'Quiz #1: Bash';
 		question: 'Qu''est-ce que ce Bash? ';
-		singleResponse: false;
+		beMultiple;
 		choices:
 			{'Une interface textuel pour interagir avec le systeme d''explotation'.
 			'Une boule de cristal' . 'Une interface graphique pour interagir avec le systeme d''explotation'.

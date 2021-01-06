@@ -1,6 +1,11 @@
+"
+I am an open question list. 
+I almost delegate to questionaire. 
+My main duty is to trasnform a collection of strings in open questions
+"
 Class {
 	#name : #SaOpenQuestionList,
-	#superclass : #SaUnit,
+	#superclass : #SaAssignment,
 	#instVars : [
 		'questionaire'
 	],
@@ -15,9 +20,8 @@ SaOpenQuestionList >> initialize [
 
 { #category : #accessing }
 SaOpenQuestionList >> isSatisfied [
-	^ true "
-	^ questions allSatisfy: [ :q | 
-		  (self state at: q ifAbsent: [ '' ]) isNotEmpty ]"
+
+	^ super isSatisfied not or: [ questionaire isSatisfied ]
 ]
 
 { #category : #accessing }

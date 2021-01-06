@@ -1,3 +1,6 @@
+"
+I am here to render multiple choice questions. 
+"
 Class {
 	#name : #SaMultipleChoiceWidget,
 	#superclass : #SaPresenter,

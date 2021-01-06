@@ -1,10 +1,12 @@
+"
+I am one of those boring degree of agreement marketing poll questions .
+"
 Class {
 	#name : #SaSatisfactionQuestionTable,
-	#superclass : #SaUnit,
+	#superclass : #SaAssignment,
 	#instVars : [
 		'responses',
-		'questions',
-		'state'
+		'questions'
 	],
 	#category : #'Sagan-Model'
 }
@@ -12,7 +14,8 @@ Class {
 { #category : #testing }
 SaSatisfactionQuestionTable >> isSatisfied [
 
-	^ self state allSatisfy: [ :e | e anySatisfy: [ :v | v = true ] ]
+	^ super isSatisfied not or: [ 
+		  self state allSatisfy: [ :e | e anySatisfy: [ :v | v = true ] ] ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -41,9 +44,11 @@ SaSatisfactionQuestionTable >> state [
 
 { #category : #'as yet unclassified' }
 SaSatisfactionQuestionTable >> whatIsMissing [
-	^ 'The following questions are not responded: ', String crlf,
-	(String crlf join: ((self state select: [ :q | q noneSatisfy: [ :a | a = true ] ]) 
-		collect: [ :d | d at: #Question ]))
+
+	^ 'The following questions are not responded: ' , String crlf
+	  , (String crlf join:
+			   ((self state select: [ :q | q noneSatisfy: [ :a | a ] ]) 
+				    collect: [ :d | d at: #Question ]))
 ]
 
 { #category : #accessing }

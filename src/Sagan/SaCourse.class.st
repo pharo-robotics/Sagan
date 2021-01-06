@@ -1,3 +1,7 @@
+"
+I do represent a Course. 
+I am composed by a lesson and a title. I work only as a semantic container.
+"
 Class {
 	#name : #SaCourse,
 	#superclass : #Object,

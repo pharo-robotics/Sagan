@@ -1,3 +1,6 @@
+"
+I am here to draw open questions
+"
 Class {
 	#name : #SaOpenQuestionWidget,
 	#superclass : #SaPresenter,

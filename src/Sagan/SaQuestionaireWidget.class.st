@@ -1,3 +1,6 @@
+"
+I do put together many assignments. I have a table to show an overview and a viewport to render the widget related to this assingment
+"
 Class {
 	#name : #SaQuestionaireWidget,
 	#superclass : #SaPresenter,

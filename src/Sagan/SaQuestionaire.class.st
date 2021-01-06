@@ -1,6 +1,9 @@
+"
+I am a large assignment. I am composed by many other assignents. 
+"
 Class {
 	#name : #SaQuestionaire,
-	#superclass : #SaUnit,
+	#superclass : #SaAssignment,
 	#instVars : [
 		'questions'
 	],
@@ -10,7 +13,8 @@ Class {
 { #category : #'as yet unclassified' }
 SaQuestionaire >> isSatisfied [
 
-	^ questions allSatisfy: [ :q | q isSatisfied ]
+	^ super isSatisfied not or: [ 
+		  questions allSatisfy: [ :q | q isSatisfied ] ]
 ]
 
 { #category : #'as yet unclassified' }

@@ -1,3 +1,6 @@
+"
+I am the class room . The main widget. I have the lessons and the lesson viewer. 
+"
 Class {
 	#name : #SaClassRoom,
 	#superclass : #SaPresenter,

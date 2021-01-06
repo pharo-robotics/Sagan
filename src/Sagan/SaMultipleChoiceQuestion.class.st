@@ -1,14 +1,27 @@
+"
+I am multiple choice question assignment. 
+I may have single or multiple reponses
+"
 Class {
 	#name : #SaMultipleChoiceQuestion,
-	#superclass : #SaUnit,
+	#superclass : #SaAssignment,
 	#instVars : [
 		'question',
 		'choices',
-		'state',
 		'singleReponse'
 	],
 	#category : #'Sagan-Model'
 }
+
+{ #category : #accessing }
+SaMultipleChoiceQuestion >> beMultiple [
+	singleReponse := false.
+]
+
+{ #category : #accessing }
+SaMultipleChoiceQuestion >> beSingle [
+	singleReponse := true.
+]
 
 { #category : #accessing }
 SaMultipleChoiceQuestion >> choices [
@@ -35,7 +48,7 @@ SaMultipleChoiceQuestion >> initialize [
 { #category : #accessing }
 SaMultipleChoiceQuestion >> isSatisfied [
 
-	^ self state anySatisfy: [ :a | a ]
+	^ super isSatisfied not or: [ self state anySatisfy: [ :a | a ] ]
 ]
 
 { #category : #accessing }
@@ -69,12 +82,6 @@ SaMultipleChoiceQuestion >> setResponse: aResponse [
 	self assert: (choices includes: aResponse).
 	self isSingleResponse ifTrue: [ self state removeAll ].
 	self state at: aResponse put: true.
-]
-
-{ #category : #accessing }
-SaMultipleChoiceQuestion >> singleResponse: aBool [
-
-	singleReponse := aBool
 ]
 
 { #category : #accessing }

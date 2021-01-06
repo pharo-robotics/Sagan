@@ -1,3 +1,10 @@
+"
+I am some kind of media content. 
+I hold some markdown content that describes the content of the video / audio. 
+I am not markdowncontent subclass because the rendering and management of the content is radically different. 
+
+I should consider to unify my self with markdowncontent.
+"
 Class {
 	#name : #SaMediaContent,
 	#superclass : #SaUnit,

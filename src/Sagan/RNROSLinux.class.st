@@ -1,3 +1,6 @@
+"
+I explain linux
+"
 Class {
 	#name : #RNROSLinux,
 	#superclass : #RNROSLesson,
@@ -62,7 +65,7 @@ RNROSLinux >> linuxQuiz [
 	questions
 		add:
 			(SaMultipleChoiceQuestion new
-				singleResponse: false;
+				beMultiple;
 				question: 'Qu''est-ca veut dire "GPL"';
 				choices:
 					{'Licence publique générale' . 'GNU Not Unix' . 'License gratuite'};
@@ -86,7 +89,7 @@ RNROSLinux >> quizGettingOurEnvironmentRunning [
 		add:
 			(SaMultipleChoiceQuestion new
 				question: 'Quelle version de ROS on a installé?';
-				singleResponse: false;
+				beMultiple;
 				choices: {'Groovy' . 'Noetic' . 'Fuerte' . 'Hydro'};
 				yourself).
 	questions
@@ -127,7 +130,7 @@ RNROSLinux >> quizUbuntuInstallation [
 		add:
 			(SaMultipleChoiceQuestion new
 				question: 'Que type de disque dure on a choisi? ';
-				singleResponse: false;
+				beMultiple;
 				choices:
 					{'Dynamiquement alloué' . 'Statiquement alloué' . 'Allocation hybride'};
 				yourself).
@@ -209,7 +212,7 @@ RNROSLinux >> vboxQuiz [
 	questions := OrderedCollection new.
 	questions add: (SaMultipleChoiceQuestion new
 			 question: 'A quoi ça serve la virtualization?';
-			 singleResponse: false;
+			 beMultiple;
 			 choices:
 				 { 'Maximizer l''utilization des resources computationelles'.
 				 'Minimizer le gaspillage d''electricité'.

@@ -1,34 +1,40 @@
+"
+I am a finishing unit. 
+
+Im never satisfied (to avoid the passage to ""next but unexisting lesson"") 
+Normally i am in charge of holding the summary of the lesson. This is why i am subclass of markdowncontent
+"
 Class {
-	#name : #SaFinish,
+	#name : #SaLessonSummary,
 	#superclass : #SaMarkdownContent,
 	#category : #'Sagan-Model'
 }
 
 { #category : #accessing }
-SaFinish >> initialize [
+SaLessonSummary >> initialize [
 
 	super initialize.
 	title := 'Lesson finished'
 ]
 
 { #category : #accessing }
-SaFinish >> isFinal [
+SaLessonSummary >> isFinal [
 	^ true
 ]
 
 { #category : #accessing }
-SaFinish >> isSatisfied [
+SaLessonSummary >> isSatisfied [
 	^ false
 ]
 
 { #category : #accessing }
-SaFinish >> whatIsMissing [
+SaLessonSummary >> whatIsMissing [
 
 	^ 'Lesson finished! Export the contents, and continue with the next lesson :) '
 ]
 
 { #category : #accessing }
-SaFinish >> widgetIn: aPresenter [
+SaLessonSummary >> widgetIn: aPresenter [
 	| component c text |
 	component := aPresenter instantiate: SpDynamicPresenter.
 	component layout: SpBoxLayout newVertical.

@@ -1,3 +1,9 @@
+"
+I represent a unit of content. 
+I am an abstract class. 
+I have different shapes. I shall know if am or not optional, if my assignment is or not satisfied and to respond what is missing to be satisfied.
+Each of my subclasses must know also how to show it self in a classroom. 
+"
 Class {
 	#name : #SaUnit,
 	#superclass : #Object,

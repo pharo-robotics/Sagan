@@ -1,24 +1,20 @@
+"
+I am an open question assignment. 
+
+"
 Class {
 	#name : #SaOpenQuestion,
-	#superclass : #SaUnit,
+	#superclass : #SaAssignment,
 	#instVars : [
-		'question',
-		'state'
+		'question'
 	],
 	#category : #'Sagan-Model'
 }
 
 { #category : #initialization }
-SaOpenQuestion >> initialize [
-
-	super initialize.
-	state := ''
-]
-
-{ #category : #initialization }
 SaOpenQuestion >> isSatisfied [
 
-	^ state isNotEmpty
+	^ super isSatisfied not or: [ self state isEmptyOrNil ]
 ]
 
 { #category : #initialization }
@@ -34,12 +30,20 @@ SaOpenQuestion >> question: aString [
 
 { #category : #'as yet unclassified' }
 SaOpenQuestion >> response [
-	^ state ifEmpty: [ 'Not responded' ]
+
+	^ self state isEmptyOrNil
+		  ifTrue: [ 'Not responded' ]
+		  ifFalse: [ self state ]
 ]
 
 { #category : #initialization }
-SaOpenQuestion >> state: aResponse [
+SaOpenQuestion >> response: aResponse [
  	state := aResponse 
+]
+
+{ #category : #'as yet unclassified' }
+SaOpenQuestion >> state [
+	^ state 
 ]
 
 { #category : #initialization }
@@ -53,6 +57,6 @@ SaOpenQuestion >> widgetIn: aPresenter [
 	^ (aPresenter instantiate: SaOpenQuestionWidget)
 		  question: question;
 		  answer: state;
-		  whenTextChangedDo: [ :text | self state: text ];
+		  whenTextChangedDo: [ :text | self response: text ];
 		  yourself
 ]

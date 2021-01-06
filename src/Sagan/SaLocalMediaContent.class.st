@@ -1,3 +1,7 @@
+"
+I am a media content that happen to be local. 
+Once the VLC bindings for video are working properly, i am going to render files that are mean to be opened locally. For VLC this is a different API.
+"
 Class {
 	#name : #SaLocalMediaContent,
 	#superclass : #SaMediaContent,

@@ -1,8 +1,15 @@
+"
+I am here to add some convenient conveniences for the project. 
+"
 Class {
 	#name : #SaPresenter,
 	#superclass : #SpPresenter,
 	#category : #'Sagan-UI'
 }
+
+{ #category : #'instance creation' }
+SaPresenter >> finishRendering [
+]
 
 { #category : #'instance creation' }
 SaPresenter >> newLessonEntryTable [

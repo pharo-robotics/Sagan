@@ -1,3 +1,6 @@
+"
+I can manage a lesson by using the controls of next, previous 
+"
 Class {
 	#name : #SaLessonViewer,
 	#superclass : #SaPresenter,
@@ -15,7 +18,7 @@ Class {
 { #category : #specs }
 SaLessonViewer class >> defaultSpec [
 	^ SpBoxLayout newVertical
-		add: #unitTitleLabel height: self toolbarHeight;
+		add: #unitTitleLabel height:60;
 		add: #content;
 		add:
 			(SpBoxLayout newHorizontal
@@ -30,7 +33,9 @@ SaLessonViewer class >> defaultSpec [
 
 { #category : #accessing }
 SaLessonViewer >> content: aSpRichTextPresenter [ 
-	content := aSpRichTextPresenter
+	content := aSpRichTextPresenter.
+	self update.
+	content finishRendering.
 ]
 
 { #category : #initialization }
@@ -61,6 +66,7 @@ SaLessonViewer >> lesson [
 { #category : #initialization }
 SaLessonViewer >> lesson: aLesson [ 
 	lesson := aLesson. 
+	lesson backToFirstUnit.
 	self updateLesson.
 ]
 
@@ -90,8 +96,11 @@ SaLessonViewer >> previous [
 
 { #category : #'previous ' }
 SaLessonViewer >> unitTitle: aTitle [
-	unitTitleLabel text: ((MicroDownParser asText: '#**', aTitle, '**') copyReplaceAll: String cr with:'')
 
+	unitTitleLabel text:
+		((MicroDownParser asText: '**' , aTitle , '**')
+			 copyReplaceAll: String cr
+			 with: '')
 ]
 
 { #category : #initialization }
@@ -104,5 +113,6 @@ SaLessonViewer >> updateLesson [
 		^ self ].
 
 	lesson current renderIn: self.
-	self update.
+	progress fixedPercentage: lesson completedPct.
+	
 ]

@@ -1,3 +1,6 @@
+"
+I am a failed attempt to draw videos in athens / cairo canvas 
+"
 Class {
 	#name : #SaVideoPresenter,
 	#superclass : #Object,

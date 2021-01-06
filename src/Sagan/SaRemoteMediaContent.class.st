@@ -1,3 +1,8 @@
+"
+I am a media content that happen to be remote.
+Once the VLC bindings for video are working properly, i am going to render files that are mean to be opened remotely. For VLC this is a different API.
+
+"
 Class {
 	#name : #SaRemoteMediaContent,
 	#superclass : #SaMediaContent,

@@ -1,3 +1,6 @@
+"
+I create a lesson. All lesson has objectives and summary.
+"
 Class {
 	#name : #RNROSLesson,
 	#superclass : #Object,
@@ -26,7 +29,7 @@ RNROSLesson >> objectives [
 
 { #category : #accessing }
 RNROSLesson >> summary [
-	^ SaFinish new
+	^ SaLessonSummary new
 		title: 'Summary';
 		content: (self filesystem / 'summary.md') readStream upToEnd;
 		yourself

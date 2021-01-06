@@ -1,3 +1,6 @@
+"
+I explain git
+"
 Class {
 	#name : #RNROSGit,
 	#superclass : #RNROSLesson,
@@ -88,7 +91,7 @@ RNROSGit >> whatIsGit [
 	^ SaMultipleChoiceQuestion new
 		title: 'Quiz #1: Git';
 		question: 'Qu''est-ce que ce Git? ';
-		singleResponse: false;
+		beMultiple;
 		choices:
 			{'Un systeme de control des versions de code source'.
 			'Un systeme de fichier' . 'Un module de developement robotique'.

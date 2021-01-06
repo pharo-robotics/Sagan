@@ -1,3 +1,6 @@
+"
+I put together the lesson creators creating a course
+"
 Class {
 	#name : #RNROSCourse,
 	#superclass : #Object,

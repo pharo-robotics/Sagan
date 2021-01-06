@@ -1,3 +1,8 @@
+"
+Im a Microdown content unit. 
+I have some textual content to be parsed and attached to my correlated widget. 
+
+"
 Class {
 	#name : #SaMarkdownContent,
 	#superclass : #SaUnit,

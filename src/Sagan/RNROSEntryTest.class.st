@@ -1,25 +1,5 @@
 "
-Ce test est un test 'État de lieu'. 
-
-Ne commence pas cet test sans avoir lu tout ce texte. C'est tres important pour vous sauver du temps.
-
-Il faut sûr tout pas se stresser. Le bout de cet examen est tout simplement comprendre le niveau de base avec le quelle on vas travailler.
-
-Ce test en les parties suivantes:
-
-- Information demographique (relation des experiences prescedentes) 
-- Concepts genereaux du development logiciel
-- Concepts genereaux des systemes d'exploitation
-- Concepts genereaux des langages de development. 
-- Concepts genereaux des Version control system. 
-- Concepts genereaux des Reseaux. 
-- Concepts genereaux des Mathematique de base.
-
-Une fois que vous avez finis l'examen il vas vous apparaitre un bouton ""Export Content!"". Ce button va faire l'export des votres reponses.
-Il faudrait apres les envoyer par courriel a votre professeur. 
-Ne ferme pas la fenetre du capsule d'avant vous assurer de avoir bien envoyé le fichier. 
-Vous risquez de perdre vos reponses.
-
+I am a poll for understanding the state of the students taking a course
 "
 Class {
 	#name : #RNROSEntryTest,
