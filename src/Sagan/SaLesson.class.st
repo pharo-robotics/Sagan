@@ -185,7 +185,7 @@ SaLesson >> start [
 { #category : #'as yet unclassified' }
 SaLesson >> submit [
 
-	(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])not
+	(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])
 		ifTrue: [ self githubSubmit ]
 		ifFalse: [ 
 			UIManager default alert:
