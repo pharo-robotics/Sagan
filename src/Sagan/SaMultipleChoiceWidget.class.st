@@ -7,8 +7,7 @@ Class {
 	#instVars : [
 		'multipleChoiceQuestion',
 		'questionLabel',
-		'choicesList',
-		'showAllOptions'
+		'choicesList'
 	],
 	#category : #'Sagan-UI'
 }
@@ -22,31 +21,9 @@ SaMultipleChoiceWidget class >> defaultSpec [
 ]
 
 { #category : #initialization }
-SaMultipleChoiceWidget >> beShowAllOptions [
-
-	showAllOptions := true
-]
-
-{ #category : #initialization }
-SaMultipleChoiceWidget >> buildWithSpecLayout: aLayout [
-	showAllOptions ifTrue: [
-	(((aLayout class allSlots detect: [ :s | s name = #children ]) read:
-		  aLayout) at: #choicesList) height:
-		choicesList items size * self class toolbarHeight.].
-	^ super buildWithSpecLayout: aLayout
-]
-
-{ #category : #initialization }
 SaMultipleChoiceWidget >> includesResponse: aResponse [
 	
 	^ multipleChoiceQuestion includesResponse: aResponse
-]
-
-{ #category : #initialization }
-SaMultipleChoiceWidget >> initialize [
-
-	super initialize.
-	showAllOptions := false
 ]
 
 { #category : #initialization }

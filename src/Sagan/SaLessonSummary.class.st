@@ -51,8 +51,8 @@ SaLessonSummary >> widgetIn: aPresenter [
 		ifFalse: [ text := super widgetIn: component.
 			component layout add: text ].
 	c := aPresenter newButton
-		label: 'Export Content!';
-		action: [ aPresenter lesson export ].
+		label: 'Submit exercise';
+		action: [ aPresenter lesson submit ].
 	component layout add: c height: 100.
 	c owner: component.
 	^ component

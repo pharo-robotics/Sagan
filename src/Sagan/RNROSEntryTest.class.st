@@ -11,6 +11,7 @@ Class {
 RNROSEntryTest >> concepts [
 
 	^ SaOpenQuestionList new
+		  beOptional;
 		  title: 'Concepts';
 		  questions:
 			  { 'Qu''est-ce que ce un program?'. 'Quels paradigme développement logiciel est-ce que vous connaissez?'.
@@ -26,6 +27,7 @@ RNROSEntryTest >> concepts [
 RNROSEntryTest >> demographicQuestions [
 
 	^ SaSatisfactionQuestionTable new
+		  beOptional;
 		  title: 'Questions generaux';
 		  possibleResponses:
 			  #( 'Quoi?' 'Non' '1 Mois' ' 1 An' ' Plus d''un an' );
@@ -50,20 +52,23 @@ RNROSEntryTest >> explanation [
 
 { #category : #'as yet unclassified' }
 RNROSEntryTest >> math [
+
 	^ SaOpenQuestionList new
-		title: 'Math';
-		questions:
-			{'Que sont les quaternions?' . 'Quelle est la notation de la représentation angulaire d''Euler?'.
-			'Comparez rapidement les coordonnées cartésiennes et polaires'.
-			'Expliquez rapidement l''idée de la transformation des coordonnées (ou de la transformation du système).'.
-			'Quelles sont les opérations matricielles et vectorielles que vous connaissez?'};
-		yourself
+		  beOptional;
+		  title: 'Math';
+		  questions:
+			  { 'Que sont les quaternions?'. 'Quelle est la notation de la représentation angulaire d''Euler?'.
+			  'Comparez rapidement les coordonnées cartésiennes et polaires'.
+			  'Expliquez rapidement l''idée de la transformation des coordonnées (ou de la transformation du système).'.
+			  'Quelles sont les opérations matricielles et vectorielles que vous connaissez?' };
+		  yourself
 ]
 
 { #category : #'as yet unclassified' }
 RNROSEntryTest >> network [
 
 	^ SaOpenQuestionList new
+		  beOptional;
 		  title: 'Réseaux.';
 		  questions: { 'Comparez rapidement TCP / IP et UDP / IP'.
 			  'Définissez rapidement le socket'.
@@ -77,6 +82,7 @@ RNROSEntryTest >> network [
 RNROSEntryTest >> operativeSystems [
 
 	^ SaOpenQuestionList new
+		  beOptional;
 		  title: 'Systeme d''Explotation';
 		  questions:
 			  { 'Qu''est-ce qu''un processus?'. 'Qu''est-ce qu''un fil?'.
@@ -89,6 +95,7 @@ RNROSEntryTest >> operativeSystems [
 RNROSEntryTest >> programmingLanguages [
 
 	^ SaOpenQuestionList new
+		  beOptional;
 		  title: 'Langage de programamtion ';
 		  questions: { 'Qu''entendez-vous par programmation en direct'.
 			  'Comparez rapidement le typage statique et dynamique'.
@@ -105,6 +112,7 @@ RNROSEntryTest >> programmingLanguages [
 RNROSEntryTest >> sourceVersionControl [
 
 	^ SaOpenQuestionList new
+		  beOptional;
 		  title: 'Systeme de control des versions';
 		  questions: { 'Que comprenez-vous par versioning?'.
 			  'Expliquez rapidement le fonctionnement de GIT'.

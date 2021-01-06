@@ -51,17 +51,11 @@ SaLesson >> current [
 ]
 
 { #category : #'as yet unclassified' }
-SaLesson >> export [
+SaLesson >> export: dir [
 
-	| dir file stream |
-	dir := UIManager default
-		       chooseDirectory: 'Choose a path for exporting'
-		       path: FileLocator home asFileReference.
-	dir ifNil: [ ^ self inform: 'Exporting cancelled' ].
+	| file stream |
 	file := dir / (title , '.lesson.' , order asString) , 'ston'.
-	file exists ifTrue: [ 
-		UIManager default alert:
-			'The file already exist. (' , file fullname , ')' ].
+	file exists ifTrue: [ file delete ].
 	stream := file writeStream.
 	STON put: self onStream: stream.
 	stream
@@ -149,6 +143,32 @@ SaLesson >> reviewStudent: aStudentName [
 SaLesson >> start [
 
 	startedDate ifNotNil: [ startedDate := DateAndTime now ]
+]
+
+{ #category : #'as yet unclassified' }
+SaLesson >> submit [
+
+	| dir |
+	dir := FileLocator home / '.sagan'.
+	dir ensureCreateDirectory.
+	(dir / '.git') exists ifFalse: [ 
+		| username |
+		username := UIManager default
+			            request: 'Please enter your github account USER NAME'
+			            initialAnswer: (Author fullNamePerSe ifNil: [ '' ]).
+		username ifNil: [ 
+			UIManager default alert: 'Imposible to submit without Username'.
+			^ self ].
+		LibC runCommand:
+			('cd {1}; git clone git@github.com:isen-ros/{2}.git .' format: { 
+					 dir fullName.
+					 username }) ].
+	self export: dir.
+	LibC resultOfCommand:
+		('cd {1}; git add . ; git commit -m "Submitting {2}" ; git pull ; git push  ' 
+			 format: { 
+					 dir fullName.
+					 title })
 ]
 
 { #category : #accessing }

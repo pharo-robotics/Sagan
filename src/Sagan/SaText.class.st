@@ -24,7 +24,7 @@ SaText class >> defaultSpec [
 
 { #category : #initialization }
 SaText >> finishRendering [
-	text text: textContent 
+	text text: (textContent ifNil: [ '' ])
 ]
 
 { #category : #initialization }

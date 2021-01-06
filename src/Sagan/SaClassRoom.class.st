@@ -74,6 +74,23 @@ SaClassRoom >> initializeToolbar [
 			 action: [ self openCourse ];
 			 yourself).
 
+	toolbar addItemLeft: (self newToolbarButton
+			 label: 'SSHKey';
+			 icon: (self iconNamed: #user);
+			 help:
+				 'Sagan uses some basic GIT commands to submit the content in the course.';
+			 action: [ self registerSSHKey ];
+			 yourself).
+			
+toolbar addItemLeft: (self newToolbarButton
+			 label: 'Update Sagan';
+			 icon: (self iconNamed: #refresh);
+			 help:
+				 'Update Sagan!';
+			 action: [ self updateSagan ];
+			 yourself)		
+	
+
 ]
 
 { #category : #initialization }
@@ -102,6 +119,20 @@ SaClassRoom >> openCourse [
 	selected := UIManager default chooseFrom: courses keys values: courses values lines: #() message: '' title: 'Please choose a course to open from the available courses'.
 	selected ifNil: [ ^ self inform: 'Non course choosen. Nothing to open' ].
 	self course: selected.
+]
+
+{ #category : #initialization }
+SaClassRoom >> registerSSHKey [
+
+	| pub |
+	(FileLocator home / '.ssh' / 'id_rsa.pub') exists ifFalse: [ 
+		LibC runCommand:
+			'ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""	' ].
+	pub := (FileLocator home / '.ssh' / 'id_rsa.pub') readStream upToEnd.
+	Clipboard clipboardText: pub.
+	UIManager default alert:
+		'The SSH Key is in your clipboard. You just need to accept this message, and the github page for adding SSH keys will open. Just paste the content in the Key area, accept and you are done'.
+	WebBrowser openOn: 'https://github.com/settings/ssh/new'
 ]
 
 { #category : #initialization }

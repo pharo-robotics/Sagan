@@ -27,11 +27,7 @@ SaOpenQuestionWidget >> answer [
 
 { #category : #initialization }
 SaOpenQuestionWidget >> answer: aValue [ 
-	answerLabel text: aValue
-]
-
-{ #category : #enumerating }
-SaOpenQuestionWidget >> beShowAllOptions [
+	answerLabel text: (aValue ifNil:[''])
 ]
 
 { #category : #initialization }
