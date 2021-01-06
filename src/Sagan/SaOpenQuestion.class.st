@@ -14,7 +14,7 @@ Class {
 { #category : #initialization }
 SaOpenQuestion >> isSatisfied [
 
-	^ super isSatisfied not or: [ self state isEmptyOrNil ]
+	^ super isSatisfied or: [ self state isEmptyOrNil not  ]
 ]
 
 { #category : #initialization }

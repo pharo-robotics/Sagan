@@ -21,7 +21,7 @@ SaOpenQuestionList >> initialize [
 { #category : #accessing }
 SaOpenQuestionList >> isSatisfied [
 
-	^ super isSatisfied not or: [ questionaire isSatisfied ]
+	^ super isSatisfied or: [ questionaire isSatisfied ]
 ]
 
 { #category : #accessing }

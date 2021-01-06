@@ -14,8 +14,8 @@ Class {
 { #category : #testing }
 SaSatisfactionQuestionTable >> isSatisfied [
 
-	^ super isSatisfied not or: [ 
-		  self state allSatisfy: [ :e | e anySatisfy: [ :v | v = true ] ] ]
+	^ super isSatisfied or: [ 
+		  self state allSatisfy: [ :e | e anySatisfy: [ :v | v ] ] ]
 ]
 
 { #category : #'as yet unclassified' }

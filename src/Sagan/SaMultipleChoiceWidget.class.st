@@ -90,7 +90,7 @@ SaMultipleChoiceWidget >> multipleChoiceQuestion: aQuestion [
 { #category : #initialization }
 SaMultipleChoiceWidget >> setResponse: aResponse [
 	
-	^ multipleChoiceQuestion setResponse: aResponse
+	^ multipleChoiceQuestion response: aResponse
 ]
 
 { #category : #initialization }

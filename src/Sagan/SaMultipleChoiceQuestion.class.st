@@ -48,7 +48,7 @@ SaMultipleChoiceQuestion >> initialize [
 { #category : #accessing }
 SaMultipleChoiceQuestion >> isSatisfied [
 
-	^ super isSatisfied not or: [ self state anySatisfy: [ :a | a ] ]
+	^ super isSatisfied or: [ self state anySatisfy: [ :a | a ] ]
 ]
 
 { #category : #accessing }
@@ -77,7 +77,7 @@ SaMultipleChoiceQuestion >> response [
 ]
 
 { #category : #accessing }
-SaMultipleChoiceQuestion >> setResponse: aResponse [
+SaMultipleChoiceQuestion >> response: aResponse [
 
 	self assert: (choices includes: aResponse).
 	self isSingleResponse ifTrue: [ self state removeAll ].

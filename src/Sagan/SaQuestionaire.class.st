@@ -13,7 +13,7 @@ Class {
 { #category : #'as yet unclassified' }
 SaQuestionaire >> isSatisfied [
 
-	^ super isSatisfied not or: [ 
+	^ super isSatisfied or: [ 
 		  questions allSatisfy: [ :q | q isSatisfied ] ]
 ]
 
