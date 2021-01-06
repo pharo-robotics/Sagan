@@ -6,22 +6,35 @@ Class {
 
 { #category : #baselines }
 BaselineOfSagan >> baseline: spec [
+
 	<baseline>
+	spec for: #'pharo8.x' do: [ self pharo8: spec ].
+	spec for: #'pharo9.x' do: [ self pharo9: spec ]
+]
+
+{ #category : #baselines }
+BaselineOfSagan >> pharo8: spec [
+
 	spec
-		for: #common
-		do: [ spec
-				baseline: 'VLC'
-				with: [ spec repository: 'github://badetitou/Pharo-LibVLC' ].
-			spec
-				baseline: 'Spec2'
-				with: [ spec repository: 'github://pharo-spec/Spec' ].
-			spec
-				baseline: 'MicrodownDev'
-				with: [ spec repository: 'github://pillar-markup/MicroDown:dev' ].
-			spec
-				package: 'Microdown-RichTextComposer'
-				with: [ spec repository: 'github://pillar-markup/MicroDown' ].
-			spec
-				package: 'Sagan'
-				with: [ spec requires: #(Spec2 MicrodownDev 'Microdown-RichTextComposer') ] ]
+		baseline: 'VLC'
+		with: [ spec repository: 'github://badetitou/Pharo-LibVLC' ].
+	spec
+		baseline: 'Spec2'
+		with: [ spec repository: 'github://pharo-spec/Spec' ].
+	spec
+		baseline: 'MicrodownDev'
+		with: [ spec repository: 'github://pillar-markup/MicroDown:dev' ].
+	spec
+		package: 'Microdown-RichTextComposer'
+		with: [ spec repository: 'github://pillar-markup/MicroDown' ].
+	spec
+		package: 'Sagan'
+		with: [ 
+		spec requires: #( Spec2 MicrodownDev 'Microdown-RichTextComposer' ) ]
+]
+
+{ #category : #baselines }
+BaselineOfSagan >> pharo9: spec [
+
+	spec package: 'Sagan'
 ]
