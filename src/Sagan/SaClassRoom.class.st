@@ -148,7 +148,7 @@ SaClassRoom >> updateCourse [
 
 { #category : #initialization }
 SaClassRoom >> updateSagan [
-
+	
 	(IceRepository registry detect: [ :s | s name = 'sagan' ])
 		discardChanges;
 		pull.
