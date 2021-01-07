@@ -36,10 +36,14 @@ SaLocalMediaContent >> openMedia [
 
 { #category : #'as yet unclassified' }
 SaLocalMediaContent >> play [
+	WebBrowser openOn: ('file://{1}' format: {file fullName}).
+	
+		"
+					
 	LibC
 		runCommand:
 			('{1} {2} &'
 				format:
 					{self command.
-					file fullName})
+					file fullName})"
 ]
