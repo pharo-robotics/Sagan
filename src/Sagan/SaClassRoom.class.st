@@ -88,12 +88,18 @@ SaClassRoom >> initializeToolbar [
 			 help: 'Update Sagan!';
 			 action: [ self updateSagan ];
 			 yourself).
-			
+
 	toolbar addItemLeft: (self newToolbarButton
 			 label: 'Save';
 			 icon: (self iconNamed: #glamorousSave);
 			 help: 'Save progress';
 			 action: [ self save ];
+			 yourself).
+	toolbar addItemLeft: (self newToolbarButton
+			 label: 'Quit';
+			 icon: (self iconNamed: #smallQuit);
+			 help: 'Quit Sagan';
+			 action: [ self quit ];
 			 yourself)
 ]
 
