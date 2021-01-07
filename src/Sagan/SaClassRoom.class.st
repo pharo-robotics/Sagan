@@ -158,6 +158,7 @@ SaClassRoom >> initializeWindow: aWindow [
 	window title: 'Sagan'.
 	window initialPosition: 0 @ 0.
 	window initialExtent: Display boundingBox corner.
+	window askOkToClose: true
 ]
 
 { #category : #testing }
@@ -204,6 +205,11 @@ SaClassRoom >> registerSSHKey [
 	UIManager default alert:
 		'The SSH Key is in your clipboard. You just need to accept this message, and the github page for adding SSH keys will open. Just paste the content in the Key area, accept and you are done'.
 	WebBrowser openOn: 'https://github.com/settings/ssh/new'
+]
+
+{ #category : #initialization }
+SaClassRoom >> requestWindowClose [
+	^ false
 ]
 
 { #category : #initialization }
