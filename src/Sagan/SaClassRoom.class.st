@@ -228,6 +228,9 @@ SaClassRoom >> updateCourse [
 { #category : #initialization }
 SaClassRoom >> updateSagan [
 	window close. 
+	(IceRepository registry detect: [ :s | s name = 'sagan' ])
+		discardChanges;
+		pull.
 	Metacello new
 		baseline: 'Sagan';
 		repository: 'github://sbragagnolo/sagan';
