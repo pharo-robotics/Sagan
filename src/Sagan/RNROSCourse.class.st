@@ -10,7 +10,12 @@ Class {
 { #category : #'as yet unclassified' }
 RNROSCourse class >> course [
 
-	^ self new course
+	| factory |
+	factory := self new.
+
+	^ { 
+		  (#'Jour 1' -> [ factory courseDay1 ]).
+		  (#'Jour 2' -> [ factory courseDay2 ]) } asDictionary
 ]
 
 { #category : #combining }
@@ -27,6 +32,33 @@ RNROSCourse >> course [
 		  addLesson: self linux;
 		  addLesson: self bash;
 		  addLesson: self git;
+		  addLesson: self roscommands;
+		  addLesson: self nodes;
+		  addLesson: self topics;
+		  addLesson: self serviceLesson;
+		  addLesson: self launchLesson;
+		  addLesson: self turtlebot;
+		  addLesson: self pathPlanning;
+		  addLesson: self summary
+]
+
+{ #category : #'as yet unclassified' }
+RNROSCourse >> courseDay1 [
+
+	^ SaCourse new
+		  title: 'Environment';
+		  addLesson: self test;
+		  addLesson: self linux;
+		  addLesson: self bash;
+		  addLesson: self git
+]
+
+{ #category : #'as yet unclassified' }
+RNROSCourse >> courseDay2 [
+
+	^ SaCourse new
+		  title: 'ROS';
+			
 		  addLesson: self roscommands;
 		  addLesson: self nodes;
 		  addLesson: self topics;

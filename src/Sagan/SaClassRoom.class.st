@@ -87,6 +87,13 @@ SaClassRoom >> initializeToolbar [
 			 icon: (self iconNamed: #refresh);
 			 help: 'Update Sagan!';
 			 action: [ self updateSagan ];
+			 yourself).
+			
+	toolbar addItemLeft: (self newToolbarButton
+			 label: 'Save';
+			 icon: (self iconNamed: #glamorousSave);
+			 help: 'Save progress';
+			 action: [ self save ];
 			 yourself)
 ]
 
@@ -113,9 +120,20 @@ SaClassRoom >> initializeWidgets [
 SaClassRoom >> openCourse [
 	| courses selected |
 	courses := SaCourse courses.
-	selected := UIManager default chooseFrom: courses keys values: courses values lines: #() message: '' title: 'Please choose a course to open from the available courses'.
+	selected := UIManager default chooseFrom: courses keys values: courses keys lines: #() message: '' title: 'Please choose a course to open from the available courses'.
 	selected ifNil: [ ^ self inform: 'Non course choosen. Nothing to open' ].
-	self course: selected.
+	
+	self course:( SaCourse openCourse: selected).
+]
+
+{ #category : #initialization }
+SaClassRoom >> quit [
+
+	Smalltalk
+		snapshot: (UIManager default
+				 confirm: 'Save progress before quitting?' translated
+				 orCancel: [ ^ self ])
+		andQuit: true
 ]
 
 { #category : #initialization }
@@ -130,6 +148,12 @@ SaClassRoom >> registerSSHKey [
 	UIManager default alert:
 		'The SSH Key is in your clipboard. You just need to accept this message, and the github page for adding SSH keys will open. Just paste the content in the Key area, accept and you are done'.
 	WebBrowser openOn: 'https://github.com/settings/ssh/new'
+]
+
+{ #category : #initialization }
+SaClassRoom >> save [
+	Smalltalk snapshot: true andQuit: false.
+	self inform: 'Progress saved'
 ]
 
 { #category : #initialization }

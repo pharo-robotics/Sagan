@@ -10,15 +10,29 @@ Class {
 		'title'
 	],
 	#classInstVars : [
-		'courses'
+		'courses',
+		'openedCourses'
 	],
 	#category : #'Sagan-Model'
 }
 
 { #category : #accessing }
 SaCourse class >> courses [
-	^ {(#'ROS 1 @ ISEN' -> RNROSCourse course)} asDictionary	"courses
-		ifNil: [ courses := "	" ]"
+	^ RNROSCourse course
+]
+
+{ #category : #'as yet unclassified' }
+SaCourse class >> openCourse: aKey [
+
+	^ self openedCourses
+		  at: aKey
+		  ifAbsentPut: [ (self courses at: aKey) value ]
+]
+
+{ #category : #accessing }
+SaCourse class >> openedCourses [
+
+	^ openedCourses ifNil: [ openedCourses := Dictionary new ]
 ]
 
 { #category : #accessing }
