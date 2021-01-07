@@ -15,7 +15,7 @@ RNROSCourse class >> course [
 
 	^ { 
 		  (#'Jour 1' -> [ factory courseDay1 ]).
-		  (#'Jour 2' -> [ factory courseDay2 ]) } asDictionary
+"		  (#'Jour 2' -> [ factory courseDay2 ]) "} asDictionary
 ]
 
 { #category : #combining }
