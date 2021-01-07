@@ -85,7 +85,7 @@ SaLesson >> finish [
 SaLesson >> githubSubmit [
 	
 	| dir |
-	dir := FileLocator home / '.sagan' / submitFolder .
+	dir := FileLocator home / '.sagan' / self submitFolder .
 	dir ensureCreateDirectory.
 	(dir / '.git') exists ifFalse: [ 
 		| username |
@@ -194,6 +194,11 @@ SaLesson >> submit [
 We are going to proceed to export the assignement. 
 For finishing the submition you have to manually upload the file to your assigned repository, in the folder ' , submitFolder .
 					self export ]
+]
+
+{ #category : #'as yet unclassified' }
+SaLesson >> submitFolder [
+	^ submitFolder ifNil: [ #default ]
 ]
 
 { #category : #'as yet unclassified' }
