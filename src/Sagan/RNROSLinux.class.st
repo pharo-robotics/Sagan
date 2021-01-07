@@ -16,7 +16,8 @@ RNROSLinux >> filesystem [
 RNROSLinux >> gettingOurEnvironmentRunning [
 	^ SaLocalMediaContent new
 		title: 'Setting the environment: Installing ROS';
-		file: self filesystem / 'gettingTheEnvironmentRunning.mp4';
+		file: self filesystem / 'installingRos.mp4';
+		url: 'http://rmod-files.lille.inria.fr/Teach/environment/installingRos.mp4';
 		overview: self filesystem / 'gettingTheEnvironmentRunning.md';
 		yourself
 ]
@@ -26,6 +27,7 @@ RNROSLinux >> installUbuntu [
 	^ SaLocalMediaContent new
 		title: 'Installer Ubuntu';
 		file: self filesystem / 'installingUbuntu.mp4';
+		url: 'http://rmod-files.lille.inria.fr/Teach/environment/installingUbuntu.mp4';
 		overview: self filesystem / 'installingUbuntu.md';
 		yourself
 ]

@@ -66,6 +66,7 @@ RNROSBash >> bashTutorial [
 	^ SaLocalMediaContent new
 		title: 'Bash Tutorial';
 		file: self filesystem / 'bash-tutorial.mp4';
+		url: 'http://rmod-files.lille.inria.fr/Teach/environment/bash.mp4';
 		overview: self filesystem / 'bash-tutorial.md';
 		yourself
 ]

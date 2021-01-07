@@ -69,6 +69,7 @@ RNROSGit >> gitTutorial [
 		title: 'Git Tutorial';
 		file: self filesystem / 'git-tutorial.mp4';
 		overview: self filesystem / 'git-tutorial.md';
+		url: 'http://rmod-files.lille.inria.fr/Teach/environment/git.mp4';
 		yourself
 ]
 

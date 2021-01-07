@@ -7,7 +7,8 @@ Class {
 	#superclass : #SaMediaContent,
 	#instVars : [
 		'file',
-		'playing'
+		'playing',
+		'url'
 	],
 	#category : #'Sagan-Model'
 }
@@ -36,8 +37,12 @@ SaLocalMediaContent >> openMedia [
 
 { #category : #'as yet unclassified' }
 SaLocalMediaContent >> play [
-	WebBrowser openOn: ('file://{1}' format: {file fullName}).
-	
+
+	file exists
+		ifTrue: [ 
+		WebBrowser openOn: ('file://{1}' format: { file fullName }) ]
+		ifFalse: [ 
+			WebBrowser openOn: url ].
 		"
 					
 	LibC
@@ -45,5 +50,10 @@ SaLocalMediaContent >> play [
 			('{1} {2} &'
 				format:
 					{self command.
-					file fullName})"
+					file fullName})" 
+]
+
+{ #category : #accessing }
+SaLocalMediaContent >> url: anUrl [ 
+	url := anUrl
 ]
