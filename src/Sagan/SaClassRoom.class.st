@@ -10,7 +10,8 @@ Class {
 		'toolbar',
 		'statusbar',
 		'lessonsTable',
-		'course'
+		'course',
+		'window'
 	],
 	#category : #'Sagan-UI'
 }
@@ -39,7 +40,11 @@ SaClassRoom class >> initialize [
 
 { #category : #specs }
 SaClassRoom class >> openSaganClassroom [
-	SaClassRoom new openWithSpec  title: 'Class room'
+
+	^ self new
+		  openWithSpec;
+		  maximize;
+		  yourself
 ]
 
 { #category : #specs }
@@ -130,6 +135,20 @@ SaClassRoom >> initializeWidgets [
 ]
 
 { #category : #initialization }
+SaClassRoom >> initializeWindow: aWindow [ 
+
+	window := aWindow.
+	window aboutText: 'Sagan'.
+	window title: 'Sagan'
+]
+
+{ #category : #initialization }
+SaClassRoom >> maximize [
+
+	window maximize
+]
+
+{ #category : #initialization }
 SaClassRoom >> openCourse [
 	| courses selected |
 	courses := SaCourse courses.
@@ -177,12 +196,14 @@ SaClassRoom >> setLesson: aLesson [
 
 { #category : #initialization }
 SaClassRoom >> updateCourse [
-	lessonsTable items: course lessons
+
+	lessonsTable items: course lessons.
+	window title: 'Sagan: ' , (course title ifNil: [ '' ])
 ]
 
 { #category : #initialization }
 SaClassRoom >> updateSagan [
-	
+	window close. 
 	(IceRepository registry detect: [ :s | s name = 'sagan' ])
 		discardChanges;
 		pull.
@@ -190,5 +211,6 @@ SaClassRoom >> updateSagan [
 		baseline: 'Sagan';
 		repository: 'github://sbragagnolo/sagan';
 		onConflictUseIncoming;
-		load
+		load.
+	self class openSaganClassroom .
 ]
