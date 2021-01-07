@@ -31,6 +31,13 @@ SaClassRoom class >> defaultSpec [
 ]
 
 { #category : #specs }
+SaClassRoom class >> initialize [
+	SessionManager default
+		registerSystemClassNamed: self name
+		atPriority: 50
+]
+
+{ #category : #specs }
 SaClassRoom class >> openSaganClassroom [
 	SaClassRoom new openWithSpec  title: 'Class room'
 ]
