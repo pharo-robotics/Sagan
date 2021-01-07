@@ -7,7 +7,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'lessons',
-		'title'
+		'title',
+		'courseFolder'
 	],
 	#classInstVars : [
 		'courses',
@@ -37,9 +38,21 @@ SaCourse class >> openedCourses [
 
 { #category : #accessing }
 SaCourse >> addLesson: aLesson [
-
 	aLesson order ifNil: [ aLesson order: lessons size ].
-	lessons add: aLesson
+	lessons add: aLesson.
+	aLesson submitFolder: self courseFolder.
+]
+
+{ #category : #accessing }
+SaCourse >> courseFolder [
+
+	^ courseFolder ifNil: [ #default ]
+]
+
+{ #category : #accessing }
+SaCourse >> courseFolder: aFolderName [
+
+	^ courseFolder := aFolderName
 ]
 
 { #category : #accessing }

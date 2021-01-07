@@ -46,6 +46,7 @@ RNROSCourse >> course [
 RNROSCourse >> courseDay1 [
 
 	^ SaCourse new
+		  courseFolder: #Environment;
 		  title: 'Environment';
 		  addLesson: self test;
 		  addLesson: self linux;
@@ -58,7 +59,7 @@ RNROSCourse >> courseDay2 [
 
 	^ SaCourse new
 		  title: 'ROS';
-			
+		  courseFolder: #Environment;
 		  addLesson: self roscommands;
 		  addLesson: self nodes;
 		  addLesson: self topics;
