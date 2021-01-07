@@ -13,6 +13,9 @@ Class {
 		'course',
 		'window'
 	],
+	#classInstVars : [
+		'instance'
+	],
 	#category : #'Sagan-UI'
 }
 
@@ -33,18 +36,31 @@ SaClassRoom class >> defaultSpec [
 
 { #category : #specs }
 SaClassRoom class >> initialize [
+
+	SessionManager default unregisterClassNamed: self name.
 	SessionManager default
-		registerSystemClassNamed: self name
-		atPriority: 50
+		registerGuiClassNamed: self name
+		atPriority: 100000
 ]
 
 { #category : #specs }
 SaClassRoom class >> openSaganClassroom [
 
-	^ self new
-		  openWithSpec;
-		  maximize;
-		  yourself
+	instance ifNotNil: [ instance isClosed ifFalse: [ ^ self ] ].
+	instance := self new.
+	instance openWithSpec
+]
+
+{ #category : #specs }
+SaClassRoom class >> shutDown:  isQuitting [
+	isQuitting ifTrue: [self allInstances do: #close.]
+	
+]
+
+{ #category : #specs }
+SaClassRoom class >> startUp: isANewSession [
+
+	isANewSession ifTrue: [ self openSaganClassroom ]
 ]
 
 { #category : #specs }
@@ -135,11 +151,19 @@ SaClassRoom >> initializeWidgets [
 ]
 
 { #category : #initialization }
-SaClassRoom >> initializeWindow: aWindow [ 
+SaClassRoom >> initializeWindow: aWindow [
 
 	window := aWindow.
 	window aboutText: 'Sagan'.
-	window title: 'Sagan'
+	window title: 'Sagan'.
+	window initialPosition: 0 @ 0.
+	window initialExtent: Display boundingBox corner.
+]
+
+{ #category : #testing }
+SaClassRoom >> isClosed [
+
+	^ window isNil or: [ window isClosed ]
 ]
 
 { #category : #initialization }
