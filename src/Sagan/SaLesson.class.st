@@ -192,7 +192,7 @@ SaLesson >> submit [
 			UIManager default alert:
 				'Meanwhile working on windows, Sagan cannot connect directly to github. 
 We are going to proceed to export the assignement. 
-For finishing the submition you have to manually upload the file to your assigned repository'.
+For finishing the submition you have to manually upload the file to your assigned repository, in the folder ' , submitFolder .
 					self export ]
 ]
 
