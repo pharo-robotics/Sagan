@@ -51,6 +51,25 @@ SaLesson >> current [
 		  ifFalse: [ units at: current ]
 ]
 
+{ #category : #accessing }
+SaLesson >> ensureGitRepo [
+
+	| dir username |
+	dir := FileLocator home / '.sagan'.
+	dir ensureCreateDirectory.
+	(dir / '.git') exists ifTrue: [ ^ self ].
+	username := UIManager default
+		            request: 'Please enter your github account USER NAME'
+		            initialAnswer: (Author fullNamePerSe ifNil: [ '' ]).
+	username ifNil: [ 
+		UIManager default alert: 'Imposible to submit without Username'.
+		^ self ].
+	LibC runCommand:
+		('cd {1}; git clone git@github.com:isen-ros/{2}.git .' format: { 
+				 dir fullName.
+				 username })
+]
+
 { #category : #'as yet unclassified' }
 SaLesson >> export [
 
@@ -83,28 +102,17 @@ SaLesson >> finish [
 
 { #category : #'as yet unclassified' }
 SaLesson >> githubSubmit [
-	
+
 	| dir |
+	self ensureGitRepo.
 	dir := FileLocator home / '.sagan' / self submitFolder .
 	dir ensureCreateDirectory.
-	(dir / '.git') exists ifFalse: [ 
-		| username |
-		username := UIManager default
-			            request: 'Please enter your github account USER NAME'
-			            initialAnswer: (Author fullNamePerSe ifNil: [ '' ]).
-		username ifNil: [ 
-			UIManager default alert: 'Imposible to submit without Username'.
-			^ self ].
-		LibC runCommand:
-			('cd {1}; git clone git@github.com:isen-ros/{2}.git .' format: { 
-					 dir fullName.
-					 username }) ].
 	self export: dir.
-	LibC resultOfCommand:
-		('cd {1}; git add . ; git commit -m "Submitting {2}" ; git pull ; git push  ' 
-			 format: { 
-					 dir fullName.
-					 title })
+	self inform: (LibC resultOfCommand:
+			 ('cd {1}; git add . ; git commit -m "Submitting {2}" ; git pull ; git push  ' 
+				  format: { 
+						  dir fullName.
+						  title }))
 ]
 
 { #category : #accessing }
