@@ -76,6 +76,11 @@ SaClassRoom class >> worldMenuOn: aBuilder [
 	
 ]
 
+{ #category : #initialization }
+SaClassRoom >> aboutSaganVideo [
+	WebBrowser openOn: 'http://rmod-files.lille.inria.fr/Teach/sagan.mp4'
+]
+
 { #category : #adding }
 SaClassRoom >> addLesson [
 	self notYetImplemented 
@@ -123,12 +128,21 @@ SaClassRoom >> initializeToolbar [
 			 help: 'Save progress';
 			 action: [ self save ];
 			 yourself).
-	toolbar addItemLeft: (self newToolbarButton
+	toolbar addItemRight: (self newToolbarButton
 			 label: 'Quit';
 			 icon: (self iconNamed: #smallQuit);
 			 help: 'Quit Sagan';
 			 action: [ self quit ];
-			 yourself)
+			 yourself).
+			
+		
+toolbar addItemLeft: (self newToolbarButton
+			 label: 'About';
+			 icon: (self iconNamed: #question);
+			 help: 'Video About Sagan';
+			 action: [ self aboutSaganVideo ];
+			 yourself)	
+
 ]
 
 { #category : #initialization }
