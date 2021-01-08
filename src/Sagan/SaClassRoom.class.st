@@ -138,7 +138,7 @@ SaClassRoom >> initializeToolbar [
 		
 toolbar addItemLeft: (self newToolbarButton
 			 label: 'About';
-			 icon: (self iconNamed: #question);
+			 icon: ((self iconNamed: #question) scaledToSize: 50@50);
 			 help: 'Video About Sagan';
 			 action: [ self aboutSaganVideo ];
 			 yourself)	
