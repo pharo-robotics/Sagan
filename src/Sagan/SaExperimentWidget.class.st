@@ -15,8 +15,9 @@ Class {
 { #category : #specs }
 SaExperimentWidget class >> defaultSpec [
 	^ SpBoxLayout newVertical
-		add: #title height: self toolbarHeight * 1.5;
+		
 		add: #explanation;
+		add: #title height: self toolbarHeight * 1.5;
 		add: #notes;
 		add:
 			(SpBoxLayout newHorizontal
@@ -34,18 +35,18 @@ SaExperimentWidget >> experiment: anExperiment [
 
 { #category : #initialization }
 SaExperimentWidget >> initializeWidgets [
-
 	super initializeWidgets.
 	start := self newButton.
-	start icon: (self iconNamed:#glamorousGo).
+	start icon: (self iconNamed: #glamorousGo).
 	start action: [ self start ].
 	stop := self newButton.
-	stop icon: (self iconNamed:#protocolPrivate).
+	stop icon: (self iconNamed: #protocolPrivate).
 	stop action: [ self stop ].
-	notes := self newText. 
-	notes whenTextChanged: [ : t | self updateNotes: t ].
+	notes := self newText.
+	notes whenTextChangedDo: [ :t | self updateNotes: t ].
 	explanation := self newText.
-	title := self newLabel. 
+	title := self newLabel.
+	title label: 'Take notes in this second text area'.
 ]
 
 { #category : #initialization }
@@ -63,11 +64,11 @@ SaExperimentWidget >> updateExperiment [
 	experiment ifNil: [ ^ self ].
 	notes text: experiment response.
 	explanation text: experiment description.
-	title label: experiment title
+	
 ]
 
 { #category : #initialization }
 SaExperimentWidget >> updateNotes: aText [
 	experiment ifNil: [ ^ self ].
-	experiment notes: aText asString
+	experiment response: aText asString
 ]

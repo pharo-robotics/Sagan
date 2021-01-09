@@ -26,6 +26,26 @@ SaExperiment >> play [
 ]
 
 { #category : #'as yet unclassified' }
+SaExperiment >> response [
+	^ self state
+]
+
+{ #category : #'as yet unclassified' }
+SaExperiment >> response: aString [
+	state := aString
+]
+
+{ #category : #'as yet unclassified' }
+SaExperiment >> state [
+	^ state ifNil: [ '' ]
+]
+
+{ #category : #'as yet unclassified' }
+SaExperiment >> state: aString [ 
+	self shouldBeImplemented.
+]
+
+{ #category : #'as yet unclassified' }
 SaExperiment >> stop [
 	self subclassResponsibility 
 ]
@@ -37,6 +57,7 @@ SaExperiment >> whatIsMissing [
 
 { #category : #accessing }
 SaExperiment >> widgetIn: aPresenter [
-
-	
+	^ (aPresenter instantiate: SaExperimentWidget)
+		experiment: self;
+		yourself
 ]
