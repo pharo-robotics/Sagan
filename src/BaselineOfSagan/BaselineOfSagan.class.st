@@ -28,13 +28,19 @@ BaselineOfSagan >> pharo8: spec [
 		package: 'Microdown-RichTextComposer'
 		with: [ spec repository: 'github://pillar-markup/MicroDown' ].
 	spec
+		package: 'RobotsDuNordROS'
+		with: [ spec repository: 'github://pharo-robotics/RobotsDuNordROS' ].
+	spec
 		package: 'Sagan'
 		with: [ 
-		spec requires: #( Spec2 MicrodownDev 'Microdown-RichTextComposer' ) ]
+		spec requires: #( Spec2 MicrodownDev 'Microdown-RichTextComposer' RobotsDuNordROS) ]
 ]
 
 { #category : #baselines }
 BaselineOfSagan >> pharo9: spec [
 
-	spec package: 'Sagan'
+	spec
+		package: 'RobotsDuNordROS'
+		with: [ spec repository: 'github://pharo-robotics/RobotsDuNordROS' ].
+	spec package: 'Sagan' with: [ spec requires: #( RobotsDuNordROS ) ]
 ]

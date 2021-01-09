@@ -17,11 +17,6 @@ Class {
 	#category : #'Sagan-Model'
 }
 
-{ #category : #accessing }
-SaCourse class >> courses [
-	^ RNROSCourse course
-]
-
 { #category : #'as yet unclassified' }
 SaCourse class >> openCourse: aKey [
 
