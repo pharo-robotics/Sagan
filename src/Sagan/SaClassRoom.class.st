@@ -223,7 +223,7 @@ SaClassRoom >> registerSSHKey [
 
 { #category : #initialization }
 SaClassRoom >> requestWindowClose [
-	^ false
+	^ true
 ]
 
 { #category : #initialization }

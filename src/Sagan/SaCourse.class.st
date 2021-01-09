@@ -19,7 +19,8 @@ Class {
 
 { #category : #accessing }
 SaCourse class >> courses [
-	^ RNROSCourse course
+
+	^ RNROSCourse courses
 ]
 
 { #category : #'as yet unclassified' }
