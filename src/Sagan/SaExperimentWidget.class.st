@@ -63,7 +63,7 @@ SaExperimentWidget >> stop [
 SaExperimentWidget >> updateExperiment [
 	experiment ifNil: [ ^ self ].
 	notes text: experiment response.
-	explanation text: experiment description.
+	explanation text: (MicroDownParser asText: experiment description).
 	
 ]
 
