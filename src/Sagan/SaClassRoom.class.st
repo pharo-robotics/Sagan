@@ -98,51 +98,64 @@ SaClassRoom >> course: aCourse [
 ]
 
 { #category : #initialization }
+SaClassRoom >> do: aKeyMessage [
+	[ self perform: aKeyMessage ]
+		on: Error
+		do: [ :e | UIManager default alert: e messageText ]
+]
+
+{ #category : #initialization }
 SaClassRoom >> initializeToolbar [
-
-	toolbar addItemLeft: (self newToolbarButton
-			 label: 'Course';
-			 icon: (self iconNamed: #open);
-			 help: 'Open';
-			 action: [ self openCourse ];
-			 yourself).
-	(OSPlatform current isUnix or: [ OSPlatform current isMacOS ]) 
-		ifTrue: [ 
-			toolbar addItemLeft: (self newToolbarButton
-					 label: 'SSHKey';
-					 icon: (self iconNamed: #user);
-					 help:
-						 'Sagan uses some basic GIT commands to submit the content in the course.';
-					 action: [ self registerSSHKey ];
-					 yourself) ].
-	toolbar addItemLeft: (self newToolbarButton
-			 label: 'Update Sagan';
-			 icon: (self iconNamed: #refresh);
-			 help: 'Update Sagan!';
-			 action: [ self updateSagan ];
-			 yourself).
-
-	toolbar addItemLeft: (self newToolbarButton
-			 label: 'Save';
-			 icon: (self iconNamed: #glamorousSave);
-			 help: 'Save progress';
-			 action: [ self save ];
-			 yourself).
-	toolbar addItemRight: (self newToolbarButton
-			 label: 'Quit';
-			 icon: (self iconNamed: #smallQuit);
-			 help: 'Quit Sagan';
-			 action: [ self quit ];
-			 yourself).
-			
-		
-toolbar addItemLeft: (self newToolbarButton
-			 label: 'About';
-			 icon: ((self iconNamed: #question) scaledToSize: 25@25);
-			 help: 'Video About Sagan';
-			 action: [ self aboutSaganVideo ];
-			 yourself)	
-
+	toolbar
+		addItemLeft:
+			(self newToolbarButton
+				label: 'Course';
+				icon: (self iconNamed: #open);
+				help: 'Open';
+				action: [ self do: #openCourse ];
+				yourself).
+	(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])
+		ifTrue: [ toolbar
+				addItemLeft:
+					(self newToolbarButton
+						label: 'SSHKey';
+						icon: (self iconNamed: #user);
+						help:
+							'Sagan uses some basic GIT commands to submit the content in the course.';
+						action: [ self do: #registerSSHKey ];
+						yourself) ].
+	toolbar
+		addItemLeft:
+			(self newToolbarButton
+				label: 'Update Sagan';
+				icon: (self iconNamed: #refresh);
+				help: 'Update Sagan!';
+				action: [ self do: #updateSagan ];
+				yourself).
+	toolbar
+		addItemLeft:
+			(self newToolbarButton
+				label: 'Save';
+				icon: (self iconNamed: #glamorousSave);
+				help: 'Save progress';
+				action: [ self do: #save ];
+				yourself).
+	toolbar
+		addItemRight:
+			(self newToolbarButton
+				label: 'Quit';
+				icon: (self iconNamed: #smallQuit);
+				help: 'Quit Sagan';
+				action: [ self do: #quit ];
+				yourself).
+	toolbar
+		addItemLeft:
+			(self newToolbarButton
+				label: 'About';
+				icon: ((self iconNamed: #question) scaledToSize: 25 @ 25);
+				help: 'Video About Sagan';
+				action: [ self do: #aboutSaganVideo ];
+				yourself)
 ]
 
 { #category : #initialization }
