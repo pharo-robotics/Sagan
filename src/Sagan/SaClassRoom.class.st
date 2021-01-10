@@ -248,7 +248,8 @@ SaClassRoom >> updateCourse [
 
 { #category : #initialization }
 SaClassRoom >> updateSagan [
-	window close. 
+
+	window close.
 	(IceRepository registry detect: [ :s | s name = 'sagan' ])
 		discardChanges;
 		pull.
@@ -257,5 +258,10 @@ SaClassRoom >> updateSagan [
 		repository: 'github://sbragagnolo/sagan';
 		onConflictUseIncoming;
 		load.
-	self class openSaganClassroom .
+	Metacello new
+		baseline: 'RobotsDuNordROS';
+		repository: 'github://pharo-robotics/RobotsDuNordROS';
+		onConflictUseIncoming;
+		load.
+	self class openSaganClassroom
 ]
