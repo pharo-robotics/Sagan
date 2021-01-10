@@ -242,6 +242,7 @@ SaClassRoom >> setLesson: aLesson [
 SaClassRoom >> updateCourse [
 
 	lessonsTable items: course lessons.
+	lessonsTable selectItem: lessonsTable items first.
 	window title: 'Sagan: ' , (course title ifNil: [ '' ])
 ]
 

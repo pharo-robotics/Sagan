@@ -15,5 +15,6 @@ SaBashExperiment >> command: aCommandLine [
 
 { #category : #'as yet unclassified' }
 SaBashExperiment >> play [
+	super play. 
 	LibC runCommand: command, ' &'. 
 ]
