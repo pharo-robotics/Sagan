@@ -15,5 +15,11 @@ SaBashExperiment >> command: aCommandLine [
 
 { #category : #'as yet unclassified' }
 SaBashExperiment >> play [
-	LibC runCommand: command, ' &'. 
+	super play. 
+	LibC runCommand: command , ' &'. 
+]
+
+{ #category : #'as yet unclassified' }
+SaBashExperiment >> stop [
+	self error: 'must implement'
 ]

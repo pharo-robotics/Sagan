@@ -5,7 +5,8 @@ Class {
 	#name : #SaExperiment,
 	#superclass : #SaAssignment,
 	#instVars : [
-		'description'
+		'description',
+		'played'
 	],
 	#category : #'Sagan-Model'
 }
@@ -20,9 +21,16 @@ SaExperiment >> description: aString [
 	description := aString 
 ]
 
+{ #category : #accessing }
+SaExperiment >> isSatisfied [
+
+	^ played = true or: [ super isSatisfied ]
+]
+
 { #category : #'as yet unclassified' }
 SaExperiment >> play [
-	self subclassResponsibility 
+
+	played := true
 ]
 
 { #category : #'as yet unclassified' }

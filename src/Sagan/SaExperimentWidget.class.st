@@ -51,7 +51,7 @@ SaExperimentWidget >> initializeWidgets [
 
 { #category : #initialization }
 SaExperimentWidget >> start [
-	experiment ifNotNil: [ experiment start ]
+	experiment ifNotNil: [ experiment play ]
 ]
 
 { #category : #initialization }
