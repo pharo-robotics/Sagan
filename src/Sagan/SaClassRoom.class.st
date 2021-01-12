@@ -30,7 +30,7 @@ SaClassRoom class >> defaultSpec [
 				add: #preview;
 				yourself);
 		
-		add: #statusbar height: self toolbarHeight * 1.5;
+		
 		yourself
 ]
 
