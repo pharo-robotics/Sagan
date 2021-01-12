@@ -28,8 +28,19 @@ SaExperiment >> isSatisfied [
 ]
 
 { #category : #'as yet unclassified' }
+SaExperiment >> loadStateFrom: anOtherUnit [
+	super loadStateFrom: anOtherUnit.
+	played := anOtherUnit played
+]
+
+{ #category : #'as yet unclassified' }
 SaExperiment >> play [
 	played := true. 
+]
+
+{ #category : #'as yet unclassified' }
+SaExperiment >> played [
+	^ played
 ]
 
 { #category : #'as yet unclassified' }
