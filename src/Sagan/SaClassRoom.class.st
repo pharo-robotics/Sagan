@@ -262,9 +262,11 @@ SaClassRoom >> updateCourse [
 
 { #category : #initialization }
 SaClassRoom >> updateSagan [
-
 	window close.
 	(IceRepository registry detect: [ :s | s name = 'sagan' ])
+		discardChanges;
+		pull.
+	(IceRepository registry detect: [ :s | s name = 'RobotsDuNordROS' ])
 		discardChanges;
 		pull.
 	Metacello new
