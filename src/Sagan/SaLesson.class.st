@@ -20,16 +20,24 @@ Class {
 		'current',
 		'startedDate',
 		'finishedDate',
-		'submitFolder'
+		'submitFolder',
+		'id'
 	],
 	#category : #'Sagan-Model'
 }
 
 { #category : #adding }
-SaLesson >> addUnit: aSaMarkdownContent [ 
+SaLesson >> addUnit: aSaMarkdownContent [
+	self
+		assert: (units noneSatisfy: [ :u | u id = aSaMarkdownContent id ]).
 	aSaMarkdownContent order: units size.
-	units add: aSaMarkdownContent .
-	
+	units add: aSaMarkdownContent
+]
+
+{ #category : #adding }
+SaLesson >> addUnit: aUnit id: anId [
+	aUnit id: anId.
+	self addUnit: aUnit
 ]
 
 { #category : #accessing }
@@ -115,12 +123,31 @@ SaLesson >> githubSubmit [
 						  title }))
 ]
 
+{ #category : #'as yet unclassified' }
+SaLesson >> id [
+	^ id
+]
+
+{ #category : #accessing }
+SaLesson >> id: anId [
+	id := anId
+]
+
 { #category : #accessing }
 SaLesson >> initialize [
 
 	super initialize.
 	units := OrderedCollection new.
 	current := 1.
+]
+
+{ #category : #'as yet unclassified' }
+SaLesson >> loadStateFrom: anOtherLesson [
+	anOtherLesson units
+		do: [ :old | 
+			units
+				detect: [ :new | new id = old id ]
+				ifFound: [ :new | new loadStateFrom: old ] ]
 ]
 
 { #category : #accessing }
@@ -223,4 +250,9 @@ SaLesson >> title [
 { #category : #accessing }
 SaLesson >> title: aTitle [	
 	title := aTitle 
+]
+
+{ #category : #'as yet unclassified' }
+SaLesson >> units [
+	^ units
 ]

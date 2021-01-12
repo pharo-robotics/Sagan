@@ -99,9 +99,10 @@ SaClassRoom >> course: aCourse [
 
 { #category : #initialization }
 SaClassRoom >> do: aKeyMessage [
+	self perform: aKeyMessage	"
 	[ self perform: aKeyMessage ]
 		on: Error
-		do: [ :e | UIManager default alert: e messageText ]
+		do: [ :e | UIManager default alert: e messageText ]"
 ]
 
 { #category : #initialization }

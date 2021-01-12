@@ -25,14 +25,29 @@ SaOpenQuestionList >> isSatisfied [
 ]
 
 { #category : #accessing }
+SaOpenQuestionList >> loadStateFrom: anOtherUnit [
+	self species = anOtherUnit species
+		ifFalse: [ ^ self ].
+	questionaire loadStateFrom: anOtherUnit questionaire
+]
+
+{ #category : #accessing }
+SaOpenQuestionList >> questionaire [
+	^ questionaire
+]
+
+{ #category : #accessing }
 SaOpenQuestionList >> questions: aCollection [
-	questionaire
-		questions:
-			(aCollection
-				collect: [ :q | 
-					SaOpenQuestion new
-						question: q;
-						yourself ])
+	| qs |
+	qs := OrderedCollection new.
+	aCollection asDictionary
+		keysAndValuesDo: [ :k :v | 
+			qs
+				add:
+					((SaOpenQuestion id: k)
+						question: v;
+						yourself) ].
+	questionaire questions: qs
 ]
 
 { #category : #accessing }

@@ -9,10 +9,28 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'order',
-		'title'
+		'title',
+		'id'
 	],
 	#category : #'Sagan-Model'
 }
+
+{ #category : #accessing }
+SaUnit class >> id: anId [
+	^ self new
+		id: anId;
+		yourself
+]
+
+{ #category : #accessing }
+SaUnit >> id [
+	^ id
+]
+
+{ #category : #accessing }
+SaUnit >> id: anIdOfUnit [
+	id := anIdOfUnit
+]
 
 { #category : #accessing }
 SaUnit >> isFinal [
@@ -22,6 +40,11 @@ SaUnit >> isFinal [
 { #category : #accessing }
 SaUnit >> isSatisfied [ 
 	self subclassResponsibility 
+]
+
+{ #category : #accessing }
+SaUnit >> loadStateFrom: anOtherUnit [
+	"Non state to load"
 ]
 
 { #category : #accessing }

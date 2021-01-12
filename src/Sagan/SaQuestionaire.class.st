@@ -18,13 +18,25 @@ SaQuestionaire >> isSatisfied [
 ]
 
 { #category : #'as yet unclassified' }
+SaQuestionaire >> loadStateFrom: anOtherUnit [
+	self species = anOtherUnit species
+		ifFalse: [ "Changed the type. I cannot do much " ^ self ].
+	anOtherUnit questions
+		do: [ :old | 
+			questions
+				detect: [ :new | new id = old id ]
+				ifFound: [ :new | new loadStateFrom: old ] ]
+]
+
+{ #category : #'as yet unclassified' }
 SaQuestionaire >> questions [
 	^ questions
 ]
 
 { #category : #'as yet unclassified' }
 SaQuestionaire >> questions: someQuestions [
-
+	self
+		assert: (someQuestions collect: #id) asSet size = someQuestions size.
 	questions := someQuestions
 ]
 

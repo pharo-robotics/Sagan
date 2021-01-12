@@ -17,11 +17,11 @@ SaLessonStreaming >> setUp [
 		          addUnit: (SaMarkdownContent new
 				           title: 'Objectives';
 				           content: 'content';
-				           yourself);
+				           yourself) id: #anId;
 		          addUnit: (SaLessonSummary new
 				           title: 'Summary';
 				           content: 'summary';
-				           yourself)
+				           yourself)id: #anId2
 ]
 
 { #category : #running }

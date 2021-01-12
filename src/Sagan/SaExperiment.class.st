@@ -48,11 +48,6 @@ SaExperiment >> state [
 ]
 
 { #category : #'as yet unclassified' }
-SaExperiment >> state: aString [ 
-	self shouldBeImplemented.
-]
-
-{ #category : #'as yet unclassified' }
 SaExperiment >> stop [
 	self subclassResponsibility 
 ]

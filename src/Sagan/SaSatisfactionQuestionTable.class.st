@@ -18,6 +18,13 @@ SaSatisfactionQuestionTable >> isSatisfied [
 		  self state allSatisfy: [ :e | e anySatisfy: [ :v | v ] ] ]
 ]
 
+{ #category : #accessing }
+SaSatisfactionQuestionTable >> loadStateFrom: anOtherUnit [
+	self species = anOtherUnit species
+		ifFalse: [ ^ self ].
+	state := anOtherUnit state
+]
+
 { #category : #'as yet unclassified' }
 SaSatisfactionQuestionTable >> possibleResponses: aCollection [ 
 	responses := aCollection 

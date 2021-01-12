@@ -38,6 +38,11 @@ SaAssignment >> isSatisfied [
 ]
 
 { #category : #accessing }
+SaAssignment >> loadStateFrom: anOtherUnit [
+	state := anOtherUnit state.
+]
+
+{ #category : #accessing }
 SaAssignment >> state [
 
 	^ state ifNil: [ state := Dictionary new ]
