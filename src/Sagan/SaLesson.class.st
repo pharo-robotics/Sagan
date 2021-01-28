@@ -220,7 +220,7 @@ SaLesson >> start [
 
 { #category : #'as yet unclassified' }
 SaLesson >> submit [
-
+	self export ."
 	(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])
 		ifTrue: [ self githubSubmit ]
 		ifFalse: [ 
@@ -228,7 +228,7 @@ SaLesson >> submit [
 				'Meanwhile working on windows, Sagan cannot connect directly to github. 
 We are going to proceed to export the assignement. 
 For finishing the submition you have to manually upload the file to your assigned repository, in the folder ' , submitFolder .
-					self export ]
+					self export ]"
 ]
 
 { #category : #'as yet unclassified' }
