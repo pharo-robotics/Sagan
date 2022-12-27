@@ -48,7 +48,7 @@ SaLesson >> backToFirstUnit [
 { #category : #accessing }
 SaLesson >> completedPct [
 
-	^ 100 * current / (units size max: 1).
+	^ 100 * (current - 1) / (units size max: 1)
 ]
 
 { #category : #accessing }

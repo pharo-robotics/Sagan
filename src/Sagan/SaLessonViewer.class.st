@@ -67,6 +67,7 @@ SaLessonViewer >> lesson [
 SaLessonViewer >> lesson: aLesson [ 
 	lesson := aLesson. 
 	lesson backToFirstUnit.
+	progress fixedPercentage: 0.
 	self updateLesson.
 ]
 
@@ -113,6 +114,5 @@ SaLessonViewer >> updateLesson [
 		^ self ].
 
 	lesson current renderIn: self.
-	progress fixedPercentage: lesson completedPct.
-	
+	progress fixedPercentage: lesson completedPct
 ]
