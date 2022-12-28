@@ -10,7 +10,8 @@ Class {
 	#superclass : #SaUnit,
 	#instVars : [
 		'media',
-		'overview'
+		'overview',
+		'text'
 	],
 	#category : #'Sagan-Model'
 }
@@ -40,6 +41,13 @@ SaMediaContent >> play [
 	self media play
 ]
 
+{ #category : #accessing }
+SaMediaContent >> renderIn: aLesson [
+
+	super renderIn: aLesson.
+	text text: (MicrodownParser convertToRichText: self videoOverview)
+]
+
 { #category : #'as yet unclassified' }
 SaMediaContent >> stop [
 	self media stop
@@ -47,9 +55,11 @@ SaMediaContent >> stop [
 
 { #category : #accessing }
 SaMediaContent >> videoOverview [
+
 	^ overview
-		ifNil:
-			[ '#This is a video lesson. Please click on the button to access to the content.' ]
+		  ifNil: [ 
+			  '#This is a video lesson. Please click on the button to access to the content.' ]
+		  ifNotNil: [ overview readStream upToEnd ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -63,10 +73,9 @@ SaMediaContent >> widgetIn: aPresenter [
 	| component c |
 	component := aPresenter instantiate: SpDynamicPresenter.
 	component layout: SpBoxLayout newVertical.
-	c := (aPresenter instantiate: SpTextPresenter) text:
-		     (MicrodownParser convertToRichText: self videoOverview).
-	component layout add: c.
-	c owner: component.
+	text := aPresenter instantiate: SpTextPresenter.
+	component layout add: text.
+	text owner: component.
 	c := aPresenter newButton
 		     label: 'Play video';
 		     action: [ self play ].
