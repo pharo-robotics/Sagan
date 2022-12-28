@@ -12,8 +12,8 @@ Class {
 	#category : #'Sagan-UI'
 }
 
-{ #category : #specs }
-SaExperimentWidget class >> defaultSpec [
+{ #category : #layout }
+SaExperimentWidget class >> defaultLayout [
 	^ SpBoxLayout newVertical
 		
 		add: #explanation;
@@ -61,10 +61,11 @@ SaExperimentWidget >> stop [
 
 { #category : #initialization }
 SaExperimentWidget >> updateExperiment [
+
 	experiment ifNil: [ ^ self ].
 	notes text: experiment response.
-	explanation text: (MicroDownParser asText: experiment description).
-	
+	explanation text:
+		(MicrodownParser convertToRichText: experiment description)
 ]
 
 { #category : #initialization }

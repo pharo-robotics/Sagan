@@ -15,8 +15,8 @@ Class {
 	#category : #'Sagan-UI'
 }
 
-{ #category : #specs }
-SaLessonViewer class >> defaultSpec [
+{ #category : #layout }
+SaLessonViewer class >> defaultLayout [
 	^ SpBoxLayout newVertical
 		add: #unitTitleLabel height:60;
 		add: #content;
@@ -99,7 +99,7 @@ SaLessonViewer >> previous [
 SaLessonViewer >> unitTitle: aTitle [
 
 	unitTitleLabel text:
-		((MicroDownParser asText: '**' , aTitle , '**')
+		((MicrodownParser convertToRichText: '**' , aTitle , '**')
 			 copyReplaceAll: String cr
 			 with: '')
 ]

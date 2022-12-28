@@ -12,8 +12,8 @@ Class {
 	#category : #'Sagan-UI'
 }
 
-{ #category : #specs }
-SaMultipleChoiceWidget class >> defaultSpec [
+{ #category : #layout }
+SaMultipleChoiceWidget class >> defaultLayout [
 
 	^ SpBoxLayout newVertical
 		  add: #questionLabel height: self toolbarHeight;

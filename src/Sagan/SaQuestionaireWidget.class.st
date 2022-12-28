@@ -12,8 +12,8 @@ Class {
 	#category : #'Sagan-UI'
 }
 
-{ #category : #specs }
-SaQuestionaireWidget class >> defaultSpec [
+{ #category : #layout }
+SaQuestionaireWidget class >> defaultLayout [
 
 	^ SpBoxLayout newVertical
 		  add: #table ;

@@ -19,19 +19,17 @@ Class {
 	#category : #'Sagan-UI'
 }
 
-{ #category : #specs }
-SaClassRoom class >> defaultSpec [
+{ #category : #layout }
+SaClassRoom class >> defaultLayout [
+
 	^ SpBoxLayout newVertical
-		add: #toolbar height: self toolbarHeight * 1.5;
-		add:
-			(SpPanedLayout newHorizontal
-				position: 15 percent;
-				add: #listables;
-				add: #preview;
-				yourself);
-		
-		
-		yourself
+		  add: #toolbar height: self toolbarHeight * 1.5;
+		  add: (SpPanedLayout newHorizontal
+				   positionOfSlider: 15 percent;
+				   add: #listables;
+				   add: #preview;
+				   yourself);
+		  yourself
 ]
 
 { #category : #specs }
@@ -48,7 +46,7 @@ SaClassRoom class >> openSaganClassroom [
 
 	instance ifNotNil: [ instance isClosed ifFalse: [ ^ self ] ].
 	instance := self new.
-	instance openWithSpec
+	instance open
 ]
 
 { #category : #specs }
@@ -115,7 +113,7 @@ SaClassRoom >> initializeToolbar [
 				help: 'Open';
 				action: [ self do: #openCourse ];
 				yourself).
-	(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])
+	"(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])
 		ifTrue: [ toolbar
 				addItemLeft:
 					(self newToolbarButton
@@ -124,7 +122,7 @@ SaClassRoom >> initializeToolbar [
 						help:
 							'Sagan uses some basic GIT commands to submit the content in the course.';
 						action: [ self do: #registerSSHKey ];
-						yourself) ].
+						yourself) ]."
 	toolbar
 		addItemLeft:
 			(self newToolbarButton
@@ -184,8 +182,7 @@ SaClassRoom >> initializeWindow: aWindow [
 	window := aWindow.
 	window aboutText: 'Sagan'.
 	window title: 'Sagan'.
-	window initialPosition: 0 @ 0.
-	window initialExtent: Display boundingBox corner.
+	
 	window askOkToClose: true
 ]
 

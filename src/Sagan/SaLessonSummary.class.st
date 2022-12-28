@@ -28,6 +28,13 @@ SaLessonSummary >> isSatisfied [
 ]
 
 { #category : #accessing }
+SaLessonSummary >> renderIn: aLessonViewer [
+
+	aLessonViewer content: (self widgetIn: aLessonViewer).
+	aLessonViewer unitTitle: self title
+]
+
+{ #category : #accessing }
 SaLessonSummary >> whatIsMissing [
 
 	^ 'Lesson finished! Export the contents, and continue with the next lesson :) '
@@ -36,7 +43,7 @@ SaLessonSummary >> whatIsMissing [
 { #category : #accessing }
 SaLessonSummary >> widgetIn: aPresenter [
 	| component c text |
-	component := aPresenter instantiate: SpDynamicPresenter.
+	component := aPresenter instantiate: SpPresenter.
 	component layout: SpBoxLayout newVertical.
 	c := aPresenter newLabel
 		label:

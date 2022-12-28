@@ -23,10 +23,20 @@ SaMarkdownContent >> isSatisfied [
 ]
 
 { #category : #accessing }
+SaMarkdownContent >> renderIn: aLessonViewer [
+
+	| text |
+	text := aLessonViewer newText.
+	aLessonViewer content: text.
+	aLessonViewer unitTitle: self title.
+	text text: (MicrodownParser convertToRichText: content)
+]
+
+{ #category : #accessing }
 SaMarkdownContent >> widgetIn: aPresenter [
 
 	| text |
-	text := aPresenter instantiate: SaText.
-	text text: (MicroDownParser asText: content).
+	text := aPresenter newText.
+	text text: (MicrodownParser convertToRichText: content).
 	^ text
 ]

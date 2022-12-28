@@ -11,8 +11,8 @@ Class {
 	#category : #'Sagan-UI'
 }
 
-{ #category : #specs }
-SaOpenQuestionWidget class >> defaultSpec [
+{ #category : #layout }
+SaOpenQuestionWidget class >> defaultLayout [
 
 	^ SpBoxLayout newVertical
 		  add: #questionLabel height: self toolbarHeight * 1.5;

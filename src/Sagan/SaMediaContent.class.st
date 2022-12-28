@@ -59,18 +59,17 @@ SaMediaContent >> whatIsMissing [
 
 { #category : #accessing }
 SaMediaContent >> widgetIn: aPresenter [
+
 	| component c |
 	component := aPresenter instantiate: SpDynamicPresenter.
 	component layout: SpBoxLayout newVertical.
-	c := (aPresenter instantiate: SpTextPresenter)
-		text:
-			(MicroDownParser
-				asText: self videoOverview ).
+	c := (aPresenter instantiate: SpTextPresenter) text:
+		     (MicrodownParser convertToRichText: self videoOverview).
 	component layout add: c.
 	c owner: component.
 	c := aPresenter newButton
-		label: 'Play video';
-		action: [ self play ].
+		     label: 'Play video';
+		     action: [ self play ].
 	component layout add: c height: 50.
 	c owner: component.
 	^ component
