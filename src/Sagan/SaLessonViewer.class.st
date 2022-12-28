@@ -17,18 +17,17 @@ Class {
 
 { #category : #layout }
 SaLessonViewer class >> defaultLayout [
+
 	^ SpBoxLayout newVertical
-		add: #unitTitleLabel height:60;
-		add: #content;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #previousButton width: 150 ;
-				add: #progress;
-				add: #nextButton width: 150;
-				yourself)
-		height: 50;
-		
-		yourself
+		  add: #unitTitleLabel height: 60;
+		  add: #content;
+		  add: (SpBoxLayout newHorizontal
+				   add: #previousButton width: 150;
+				   add: #progress expand: true;
+				   add: #nextButton width: 150;
+				   yourself)
+		  height: 40;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -54,7 +53,7 @@ SaLessonViewer >> initializeWidgets [
 	progress fixedPercentage: 0.
 
 	unitTitleLabel := self newTextInput.
-	unitTitleLabel enabled: false .
+	unitTitleLabel enabled: false.
 	self updateLesson
 ]
 

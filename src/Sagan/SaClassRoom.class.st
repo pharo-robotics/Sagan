@@ -113,16 +113,7 @@ SaClassRoom >> initializeToolbar [
 				help: 'Open';
 				action: [ self do: #openCourse ];
 				yourself).
-	"(OSPlatform current isUnix or: [ OSPlatform current isMacOS ])
-		ifTrue: [ toolbar
-				addItemLeft:
-					(self newToolbarButton
-						label: 'SSHKey';
-						icon: (self iconNamed: #user);
-						help:
-							'Sagan uses some basic GIT commands to submit the content in the course.';
-						action: [ self do: #registerSSHKey ];
-						yourself) ]."
+
 	toolbar
 		addItemLeft:
 			(self newToolbarButton
