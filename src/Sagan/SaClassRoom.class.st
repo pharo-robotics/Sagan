@@ -252,18 +252,16 @@ SaClassRoom >> updateCourse [
 
 { #category : #initialization }
 SaClassRoom >> updateSagan [
-
 	window close.
-	(IceRepository registry detect: [ :s | s name asLowercase = 'sagan' ])
+	(IceRepository registry detect: [ :s | s name = 'Sagan' ])
 		discardChanges;
 		pull.
-	(IceRepository registry detect: [ :s | 
-			 s name asLowercase = 'RobotsDuNordROS' asLowercase ])
+	(IceRepository registry detect: [ :s | s name = 'RobotsDuNordROS' ])
 		discardChanges;
 		pull.
 	Metacello new
 		baseline: 'Sagan';
-		repository: 'github://sbragagnolo/sagan';
+		repository: 'github://sbragagnolo/Sagan';
 		onConflictUseIncoming;
 		load.
 	Metacello new
