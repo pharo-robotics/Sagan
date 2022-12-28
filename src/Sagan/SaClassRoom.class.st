@@ -46,7 +46,9 @@ SaClassRoom class >> openSaganClassroom [
 
 	instance ifNotNil: [ instance isClosed ifFalse: [ ^ self ] ].
 	instance := self new.
-	instance open
+	SpWorldPresenter new
+		presenter: instance;
+		open
 ]
 
 { #category : #specs }
