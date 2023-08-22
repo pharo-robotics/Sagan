@@ -8,11 +8,10 @@ Load the project. Save and restart the image.
 
 
 ```smalltalk
-  Metacello new
-		repository: 'https://github.com/pharo-robotics/Sagan.git';
-		baseline: 'Sagan';
-		onWarningLog;
-		load.
+Metacello new repository: 'github://pharo-robotics/Sagan:main/src';
+      baseline: 'Sagan';
+      onWarningLog;
+      load.
 ```
 
 
